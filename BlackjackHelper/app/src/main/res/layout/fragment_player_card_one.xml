@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentPlayerCardOne">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        >
+
+
+        <TextView
+            android:id="@+id/playerCardOneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="1dp"
+            android:layout_marginStart="109dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="234dp"
+            android:text="@string/select_player_card_one_message"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/_2"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnThree"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/_3"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/playerCardOneBtnTwo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnFour"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/_4"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/playerCardOneBtnThree"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnFive"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/_5"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/playerCardOneBtnFour"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnSix"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/_6"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playerCardOneBtnTwo" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnSeven"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/_7"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/playerCardOneBtnSix"
+            app:layout_constraintTop_toBottomOf="@+id/playerCardOneBtnThree" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnEight"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/_8"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/playerCardOneBtnSeven"
+            app:layout_constraintTop_toBottomOf="@+id/playerCardOneBtnFour" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnNine"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/_9"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/playerCardOneBtnEight"
+            app:layout_constraintTop_toBottomOf="@+id/playerCardOneBtnFive" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnTen"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/_10"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playerCardOneBtnSix" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnJack"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/j"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/playerCardOneBtnTen"
+            app:layout_constraintTop_toBottomOf="@+id/playerCardOneBtnSeven" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnQueen"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/q"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/playerCardOneBtnJack"
+            app:layout_constraintTop_toBottomOf="@+id/playerCardOneBtnEight" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnKing"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/k"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/playerCardOneBtnQueen"
+            app:layout_constraintTop_toBottomOf="@+id/playerCardOneBtnNine" />
+
+        <Button
+            android:id="@+id/playerCardOneBtnAce"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_btn"
+            android:text="@string/a"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playerCardOneBtnJack" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

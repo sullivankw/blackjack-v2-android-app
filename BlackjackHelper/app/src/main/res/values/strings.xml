@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">BlackjackHelper</string>
+    <string name="item_1">Get Help</string>
+    <string name="item_2">Practice Mode</string>
+    <string name="select_dealer_card_message">What\'s the dealer showing?</string>
+    <string name="select_player_card_one_message">What\'s your first card?</string>
+    <string name="select_player_card_two_message">What\'s your other card?</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_10">10</string>
+    <string name="j">J</string>
+    <string name="q">Q</string>
+    <string name="k">K</string>
+    <string name="a">A</string>
+</resources>
