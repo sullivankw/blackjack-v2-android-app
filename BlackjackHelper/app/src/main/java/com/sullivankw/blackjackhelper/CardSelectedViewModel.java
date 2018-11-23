@@ -10,6 +10,17 @@ public class CardSelectedViewModel extends ViewModel {
     private MutableLiveData<String> playerCardOne;
     private MutableLiveData<String> playerCardTwo;
 
+    private ClientCardAdviceServiceNetworkImpl clientCardAdviceServiceNetworkImpl;
+    private MutableLiveData<String> advice;
+    private MutableLiveData<Throwable> t;
+
+
+    public CardSelectedViewModel() {
+        if (clientCardAdviceServiceNetworkImpl == null) {
+            clientCardAdviceServiceNetworkImpl = new ClientCardAdviceServiceNetworkImpl();
+        }
+    }
+
     public LiveData<String> getDealerCard() {
         if (dealerCard == null) {
             dealerCard = new MutableLiveData<>();
@@ -40,8 +51,6 @@ public class CardSelectedViewModel extends ViewModel {
         this.playerCardOne.setValue(playerCardOne);
     }
 
-
-
     public LiveData<String> getPlayerCardTwo() {
         if (playerCardTwo == null) {
             playerCardTwo = new MutableLiveData<>();
@@ -55,5 +64,25 @@ public class CardSelectedViewModel extends ViewModel {
             this.playerCardTwo = new MutableLiveData<>();
         }
         this.playerCardTwo.setValue(playerCardTwo);
+    }
+
+    public String getAdvice() {
+        //TODO boolean
+        return clientCardAdviceServiceNetworkImpl.getAdvice(false, dealerCard.getValue(),
+                playerCardOne.getValue(), playerCardTwo.getValue(), this);
+    }
+
+    public void setAdviceFromNetworkResponse(String advice) {
+        if (this.advice == null) {
+            this.advice = new MutableLiveData<>();
+        }
+        this.advice.setValue(advice);
+    }
+
+    public void setNetworkError(Throwable t) {
+        if (this.t == null) {
+            this.t = new MutableLiveData<>();
+        }
+        this.t.setValue(t);
     }
 }

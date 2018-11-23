@@ -11,10 +11,11 @@ public class CardSelectionPagerAdaptor extends FragmentPagerAdapter {
     private FragmentDealerCard fragmentDealerCard;
     private FragmentPlayerCardOne fragmentPlayerCardOne;
     private FragmentPlayerCardTwo fragmentPlayerCardTwo;
+    private ResultsFragment resultsFragment;
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     public CardSelectionPagerAdaptor(FragmentManager fm) {
@@ -22,6 +23,7 @@ public class CardSelectionPagerAdaptor extends FragmentPagerAdapter {
         fragmentDealerCard = new FragmentDealerCard();
         fragmentPlayerCardOne = new FragmentPlayerCardOne();
         fragmentPlayerCardTwo = new FragmentPlayerCardTwo();
+        resultsFragment = new ResultsFragment();
     }
 
     @Override
@@ -36,6 +38,9 @@ public class CardSelectionPagerAdaptor extends FragmentPagerAdapter {
                 break;
             case 2:
                 frag = fragmentPlayerCardTwo;
+                break;
+            case 3:
+                frag = resultsFragment;
                 break;
         }
 
@@ -54,6 +59,9 @@ public class CardSelectionPagerAdaptor extends FragmentPagerAdapter {
             }
             case 2 : {
                 return "Player's Second Card";
+            }
+            case 3 : {
+                return "Results";
             }
             default:
                 return null;

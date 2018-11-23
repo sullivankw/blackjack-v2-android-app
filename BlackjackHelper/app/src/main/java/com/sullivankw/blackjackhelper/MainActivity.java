@@ -11,7 +11,6 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements OnCardSelectedListener {
 
-    private Toolbar toolbar;
     private ViewPager viewPager;
     private CardSelectionPagerAdaptor pagerAdaptor;
     private TabLayout tabLayout;
@@ -22,11 +21,6 @@ public class MainActivity extends AppCompatActivity implements OnCardSelectedLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
-        toolbar = findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("Blackjack Helper");
-        }
         setUpViewPager();
         setUpTabLayout();
         setupViewModel();
@@ -34,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements OnCardSelectedLis
 
     private void setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(CardSelectedViewModel.class);
+        //todo setup observables
     }
 
     private void findViews() {
@@ -81,15 +76,17 @@ public class MainActivity extends AppCompatActivity implements OnCardSelectedLis
     @Override
     public void onCardSelected(int currentViewPagerPosition, String card) {
         if (currentViewPagerPosition == 2) {
-            //back to start with popup is best approach?
-            //lock ui
-            //make call to service
-            //unlock
-            viewPager.setCurrentItem(0);
-        } else {
-            viewPager.setCurrentItem(currentViewPagerPosition + 1);
+            viewModel.getAdvice();
         }
+            viewPager.setCurrentItem(currentViewPagerPosition + 1);
+    }
 
-        //TODO override backbutton, cause it kills app
+    @Override
+    public void onBackPressed() {
+        if (viewPager.getCurrentItem() != 0) {
+            viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
