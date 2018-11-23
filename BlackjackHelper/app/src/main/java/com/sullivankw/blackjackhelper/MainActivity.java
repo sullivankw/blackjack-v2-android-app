@@ -1,7 +1,9 @@
 package com.sullivankw.blackjackhelper;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +30,16 @@ public class MainActivity extends AppCompatActivity implements OnCardSelectedLis
 
     private void setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(CardSelectedViewModel.class);
-        //todo setup observables
+
+        viewModel.getAdviceFromNetworkResponse().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                if (s != null) {
+                //todo, maybe not needed since i wanna display on the fourth frag
+                }
+            }
+        });
+
     }
 
     private void findViews() {
@@ -44,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements OnCardSelectedLis
         viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(pagerAdaptor);
         viewPager.setOffscreenPageLimit(2);
-
     }
 
     @Override
@@ -59,15 +69,11 @@ public class MainActivity extends AppCompatActivity implements OnCardSelectedLis
             }
 
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //create the menu here, not in the xml!!!!
-        //must add tools:context=".MainActivity">
         getMenuInflater().inflate(R.menu.menu_items, menu);
 
         return true;

@@ -85,4 +85,20 @@ public class CardSelectedViewModel extends ViewModel {
         }
         this.t.setValue(t);
     }
+
+    public LiveData<String> getAdviceFromNetworkResponse() {
+        if (advice == null) {
+            advice = new MutableLiveData<>();
+            advice.setValue(null);
+        }
+        return advice;
+    }
+
+    public LiveData<Throwable> getNetworkError() {
+        if (t == null) {
+            t = new MutableLiveData<>();
+            t.setValue(null);
+        }
+        return t;
+    }
 }
