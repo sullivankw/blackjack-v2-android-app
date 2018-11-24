@@ -1,5 +1,7 @@
 package com.sullivankw.blackjackhelper;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.ActivityNotFoundException;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Button;
@@ -72,6 +74,14 @@ public class BaseFragment extends Fragment {
                 buttonNine, buttonTen, buttonJack, buttonQueen, buttonKing, buttonAce
         };
 
+    }
+
+    public CardSelectedViewModel getViewModel() throws ActivityNotFoundException {
+        if (getActivity() == null) {
+            throw new ActivityNotFoundException("activity not available to retrieve view model");
+        }
+        return ViewModelProviders.of(getActivity()).
+                get(CardSelectedViewModel.class);
     }
 
 }

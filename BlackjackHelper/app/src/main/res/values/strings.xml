@@ -19,4 +19,7 @@
     <string name="k">K</string>
     <string name="a">A</string>
     <string name="advice_message">You Should %1$s</string>
+    <string name="dealer_message_results">Dealer\'s Card: %1$s</string>
+    <string name="player_message_results">Player\'s Cards: %1$s and %2$s</string>
+    <string name="new_hand">New Hand</string>
 </resources>

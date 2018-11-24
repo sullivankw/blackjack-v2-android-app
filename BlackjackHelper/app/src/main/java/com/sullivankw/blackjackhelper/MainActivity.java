@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity implements OnCardSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private CardSelectionPagerAdaptor pagerAdaptor;
@@ -31,11 +31,14 @@ public class MainActivity extends AppCompatActivity implements OnCardSelectedLis
     private void setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(CardSelectedViewModel.class);
 
-        viewModel.getAdviceFromNetworkResponse().observe(this, new Observer<String>() {
+        viewModel.getNextPage().observe(this, new Observer<Integer>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                if (s != null) {
-                //todo, maybe not needed since i wanna display on the fourth frag
+            public void onChanged(@Nullable Integer integer) {
+                if (integer != null) {
+                    viewPager.setCurrentItem(integer);
+                    if (integer == 3) {
+                        viewModel.getAdvice();
+                    }
                 }
             }
         });
@@ -75,23 +78,7 @@ public class MainActivity extends AppCompatActivity implements OnCardSelectedLis
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_items, menu);
-
         return true;
-    }
-
-    @Override
-    public void onCardSelected(int currentViewPagerPosition) {
-        //we are at the end of the flow, reset and send user back to first fragment
-        if (currentViewPagerPosition == 3) {
-            viewPager.setCurrentItem(0);
-            viewModel.resetValues();
-            return;
-        }
-
-        if (currentViewPagerPosition == 2) {
-            viewModel.getAdvice();
-        }
-            viewPager.setCurrentItem(currentViewPagerPosition + 1);
     }
 
     @Override

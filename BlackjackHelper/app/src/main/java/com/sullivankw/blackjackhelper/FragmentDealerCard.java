@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class FragmentDealerCard extends BaseFragment implements View.OnClickListener, OnCardSelectedListener {
+public class FragmentDealerCard extends BaseFragment implements View.OnClickListener {
 
     private Button buttonTwo;
     private Button buttonThree;
@@ -25,7 +25,7 @@ public class FragmentDealerCard extends BaseFragment implements View.OnClickList
     private Button buttonKing;
     private Button buttonAce;
 
-    private OnCardSelectedListener listener;
+    private CardSelectedViewModel viewModel;
     private int[] buttonIdArray;
 
     public FragmentDealerCard() {
@@ -37,6 +37,7 @@ public class FragmentDealerCard extends BaseFragment implements View.OnClickList
         createBtnIdArray();
         setupViews(view);
         setupListeners();
+        viewModel = getViewModel();
         return view;
     }
 
@@ -90,9 +91,6 @@ public class FragmentDealerCard extends BaseFragment implements View.OnClickList
         buttonQueen = buttons[10];
         buttonKing = buttons[11];
         buttonAce = buttons[12];
-
-        listener = (OnCardSelectedListener) getContext();
-
     }
 
 
@@ -101,16 +99,7 @@ public class FragmentDealerCard extends BaseFragment implements View.OnClickList
 
         String card = convertButtonClickToCardSelected(v.getId(), buttonIdArray);
 
-        if (getActivity() != null) {
-            ViewModelProviders.of(getActivity()).get(CardSelectedViewModel.class).setDealerCard(card);
-            listener.onCardSelected(0);
-        }
-
+        viewModel.setDealerCard(card);
+        viewModel.setNextPage(1);
     }
-
-    @Override
-    public void onCardSelected(int currentViewPagerPosition) {
-
-    }
-
 }

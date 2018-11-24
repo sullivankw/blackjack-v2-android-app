@@ -2,10 +2,11 @@ package com.sullivankw.blackjackhelper;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ActivityNotFoundException;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,18 +15,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ResultsFragment extends Fragment implements View.OnClickListener, OnCardSelectedListener {
+public class ResultsFragment extends BaseFragment implements View.OnClickListener {
 
     private TextView dealerCardText;
-    private TextView playerCard1Text;
-    private TextView playerCard2Text;
+    private TextView playerCardsText;
     private TextView adviceText;
     private String dealerCard;
     private String playerCard1;
     private String playerCard2;
     private String advice;
     private Button returnBtn;
-    private OnCardSelectedListener listener;
+    private CardSelectedViewModel viewModel;
 
     private static String NETWORK_ERROR = "network error";
 
@@ -35,13 +35,11 @@ public class ResultsFragment extends Fragment implements View.OnClickListener, O
         View view = inflater.inflate(R.layout.fragment_results, container, false);
         setupViewsAndListeners(view);
         configureViewModel();
+
         return view;
     }
 
-    private void configureViewModel() {
-        if (getActivity() == null) {
-            return;
-        }
+    private void configureViewModel() throws ActivityNotFoundException {
         /**
          * the card variables are set with each btn click so no need to observe those.
          * TODO will work diff over no network, so will need alt paths here
@@ -49,20 +47,20 @@ public class ResultsFragment extends Fragment implements View.OnClickListener, O
          * pcard 1 and 2....so they cant be renederd. observers would prolly fix it...but wbetter way???
          *
          * **/
+        viewModel = getViewModel();
 
-        ViewModelProviders.of(getActivity()).
-                get(CardSelectedViewModel.class).getAdviceFromNetworkResponse().observe(getActivity(), new Observer<String>() {
+        viewModel.getAdviceFromNetworkResponse().observe(getActivity(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 if (s != null) {
                     advice = s;
+                    adviceText.setTypeface(null, Typeface.BOLD);
                     adviceText.setText(getResources().getString(R.string.advice_message, advice));
                 }
             }
         });
 
-        ViewModelProviders.of(getActivity()).
-                get(CardSelectedViewModel.class).getNetworkError().observe(getActivity(), new Observer<Throwable>() {
+        viewModel.getNetworkError().observe(getActivity(), new Observer<Throwable>() {
             @Override
             public void onChanged(@Nullable Throwable t) {
                 if (t != null) {
@@ -75,25 +73,19 @@ public class ResultsFragment extends Fragment implements View.OnClickListener, O
 
     private void setupViewsAndListeners(View view) {
         dealerCardText = view.findViewById(R.id.textViewDealerCard);
-        playerCard1Text = view.findViewById(R.id.textViewPlayerCard1);
+        playerCardsText = view.findViewById(R.id.textViewPlayersCard);
         adviceText = view.findViewById(R.id.textViewAdvice);
-        playerCard2Text = view.findViewById(R.id.textViewPlayerCard2);
         returnBtn = view.findViewById(R.id.returnBtn);
         returnBtn.setOnClickListener(this);
-        listener = (OnCardSelectedListener) getContext();
     }
 
     @Override
     public void onClick(View v) {
         if (v.equals(v.findViewById(R.id.returnBtn))) {
-            listener.onCardSelected(3);
+            viewModel.setNextPage(0);
         }
     }
 
-    @Override
-    public void onCardSelected(int currentViewPagerPosition) {
-
-    }
     /**
      * Since using a View Pager the views are created before they are actually visible.
      * The flow is such that the values needed to set in the text views arent set until just before
@@ -107,14 +99,15 @@ public class ResultsFragment extends Fragment implements View.OnClickListener, O
             dealerCard = ViewModelProviders.of(getActivity()).
                     get(CardSelectedViewModel.class).getDealerCard().getValue();
             dealerCardText.setText(dealerCard);
+            dealerCardText.setText(getResources().getString(R.string.dealer_message_results, dealerCard));
 
             playerCard1 = ViewModelProviders.of(getActivity()).
                     get(CardSelectedViewModel.class).getPlayerCardOne().getValue();
-            playerCard1Text.setText(playerCard1);
-
             playerCard2 = ViewModelProviders.of(getActivity()).
-                get(CardSelectedViewModel.class).getPlayerCardTwo().getValue();
-            playerCard2Text.setText(playerCard2);
+                    get(CardSelectedViewModel.class).getPlayerCardTwo().getValue();
+
+            playerCardsText.setText(getResources().getString(R.string.player_message_results, playerCard1, playerCard2));
+
         }
     }
 }

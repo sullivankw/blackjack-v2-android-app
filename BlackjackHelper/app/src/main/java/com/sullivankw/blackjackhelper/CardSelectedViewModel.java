@@ -13,6 +13,7 @@ public class CardSelectedViewModel extends ViewModel {
     private ClientCardAdviceServiceNetworkImpl clientCardAdviceServiceNetworkImpl;
     private MutableLiveData<String> advice;
     private MutableLiveData<Throwable> t;
+    private MutableLiveData<Integer> nextPage;
 
 
     public CardSelectedViewModel() {
@@ -79,19 +80,19 @@ public class CardSelectedViewModel extends ViewModel {
         this.advice.setValue(advice);
     }
 
-    public void setNetworkError(Throwable t) {
-        if (this.t == null) {
-            this.t = new MutableLiveData<>();
-        }
-        this.t.setValue(t);
-    }
-
     public LiveData<String> getAdviceFromNetworkResponse() {
         if (advice == null) {
             advice = new MutableLiveData<>();
             advice.setValue(null);
         }
         return advice;
+    }
+
+    public void setNetworkError(Throwable t) {
+        if (this.t == null) {
+            this.t = new MutableLiveData<>();
+        }
+        this.t.setValue(t);
     }
 
     public LiveData<Throwable> getNetworkError() {
@@ -107,5 +108,20 @@ public class CardSelectedViewModel extends ViewModel {
         playerCardTwo = new MutableLiveData<>();
         dealerCard = new MutableLiveData<>();
         advice = new MutableLiveData<>();
+    }
+
+    public void setNextPage(Integer nextPage) {
+        if (this.nextPage == null) {
+            this.nextPage = new MutableLiveData<>();
+        }
+        this.nextPage.setValue(nextPage);
+    }
+
+    public LiveData<Integer> getNextPage() {
+        if (nextPage == null) {
+            nextPage = new MutableLiveData<>();
+            nextPage.setValue(null);
+        }
+        return nextPage;
     }
 }

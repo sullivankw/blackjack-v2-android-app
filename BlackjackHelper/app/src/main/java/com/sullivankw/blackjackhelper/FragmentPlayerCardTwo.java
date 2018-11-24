@@ -1,6 +1,5 @@
 package com.sullivankw.blackjackhelper;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class FragmentPlayerCardTwo extends BaseFragment implements View.OnClickListener, OnCardSelectedListener {
+public class FragmentPlayerCardTwo extends BaseFragment implements View.OnClickListener {
 
     private Button buttonTwo;
     private Button buttonThree;
@@ -25,8 +24,8 @@ public class FragmentPlayerCardTwo extends BaseFragment implements View.OnClickL
     private Button buttonKing;
     private Button buttonAce;
 
-    private OnCardSelectedListener listener;
     private int[] buttonIdArray;
+    private CardSelectedViewModel viewModel;
 
     public FragmentPlayerCardTwo() {
     }
@@ -37,6 +36,7 @@ public class FragmentPlayerCardTwo extends BaseFragment implements View.OnClickL
         createBtnIdArray();
         setupViews(view);
         setupListeners();
+        viewModel = getViewModel();
 
         return view;
     }
@@ -91,27 +91,14 @@ public class FragmentPlayerCardTwo extends BaseFragment implements View.OnClickL
         buttonQueen = buttons[10];
         buttonKing = buttons[11];
         buttonAce = buttons[12];
-
-        listener = (OnCardSelectedListener) getContext();
-
     }
-
-
 
     @Override
     public void onClick(View v) {
 
         String card = convertButtonClickToCardSelected(v.getId(), buttonIdArray);
-
-        if (getActivity() != null) {
-            ViewModelProviders.of(getActivity()).get(CardSelectedViewModel.class).setPlayerCardTwo(card);
-            listener.onCardSelected(2);
-        }
-
+        viewModel.setPlayerCardTwo(card);
+        viewModel.setNextPage(3);
     }
 
-    @Override
-    public void onCardSelected(int currentViewPagerPosition) {
-
-    }
 }
