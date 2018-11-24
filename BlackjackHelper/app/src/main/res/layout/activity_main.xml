@@ -25,5 +25,17 @@
         android:layout_marginTop="80dp"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_nav_layout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@android:color/background_dark"
+        app:itemTextColor="@android:color/background_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/nav_menu" />
+
 
 </android.support.constraint.ConstraintLayout>

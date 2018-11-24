@@ -2,21 +2,24 @@ package com.sullivankw.blackjackhelper;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+
 import android.os.Bundle;
+
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private ViewPager viewPager;
     private CardSelectionPagerAdaptor pagerAdaptor;
     private TabLayout tabLayout;
     private CardSelectedViewModel viewModel;
+    private BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setUpViewPager();
         setUpTabLayout();
         setupViewModel();
+        bottomNav = setupBottomNav(R.id.bottom_nav_layout);
     }
 
     private void setupViewModel() {
@@ -64,10 +68,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.item1 : {
+            case R.id.item1: {
 
             }
-            case R.id.item2 : {
+            case R.id.item2: {
 
             }
 

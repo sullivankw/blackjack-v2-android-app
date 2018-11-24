@@ -12,5 +12,4 @@
         android:icon="@android:drawable/btn_star"
         android:title="@string/item_2" />
 
-
 </menu>
