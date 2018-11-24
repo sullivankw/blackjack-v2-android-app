@@ -80,7 +80,14 @@ public class MainActivity extends AppCompatActivity implements OnCardSelectedLis
     }
 
     @Override
-    public void onCardSelected(int currentViewPagerPosition, String card) {
+    public void onCardSelected(int currentViewPagerPosition) {
+        //we are at the end of the flow, reset and send user back to first fragment
+        if (currentViewPagerPosition == 3) {
+            viewPager.setCurrentItem(0);
+            viewModel.resetValues();
+            return;
+        }
+
         if (currentViewPagerPosition == 2) {
             viewModel.getAdvice();
         }

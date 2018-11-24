@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BlackjackHelper</string>
     <string name="item_1">Get Help</string>
-    <string name="item_2">Practice Mode</string>
+    <string name="item_2">Practice Mode (Coming Soon!)</string>
     <string name="select_dealer_card_message">What\'s the dealer showing?</string>
     <string name="select_player_card_one_message">What\'s your first card?</string>
     <string name="select_player_card_two_message">What\'s your other card?</string>
@@ -18,4 +18,5 @@
     <string name="q">Q</string>
     <string name="k">K</string>
     <string name="a">A</string>
+    <string name="advice_message">You Should %1$s</string>
 </resources>

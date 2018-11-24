@@ -101,4 +101,11 @@ public class CardSelectedViewModel extends ViewModel {
         }
         return t;
     }
+
+    public void resetValues() {
+        playerCardOne = new MutableLiveData<>();
+        playerCardTwo = new MutableLiveData<>();
+        dealerCard = new MutableLiveData<>();
+        advice = new MutableLiveData<>();
+    }
 }

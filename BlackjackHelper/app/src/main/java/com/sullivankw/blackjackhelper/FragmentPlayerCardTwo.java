@@ -105,13 +105,13 @@ public class FragmentPlayerCardTwo extends BaseFragment implements View.OnClickL
 
         if (getActivity() != null) {
             ViewModelProviders.of(getActivity()).get(CardSelectedViewModel.class).setPlayerCardTwo(card);
-            listener.onCardSelected(2, card);
+            listener.onCardSelected(2);
         }
 
     }
 
     @Override
-    public void onCardSelected(int currentViewPagerPosition, String card) {
+    public void onCardSelected(int currentViewPagerPosition) {
 
     }
 }

@@ -103,13 +103,13 @@ public class FragmentDealerCard extends BaseFragment implements View.OnClickList
 
         if (getActivity() != null) {
             ViewModelProviders.of(getActivity()).get(CardSelectedViewModel.class).setDealerCard(card);
-            listener.onCardSelected(0, card);
+            listener.onCardSelected(0);
         }
 
     }
 
     @Override
-    public void onCardSelected(int currentViewPagerPosition, String card) {
+    public void onCardSelected(int currentViewPagerPosition) {
 
     }
 
