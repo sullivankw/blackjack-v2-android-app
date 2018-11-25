@@ -18,6 +18,7 @@ public class ClientCardAdviceServiceNetworkImpl implements ClientCardAdviceServi
     public String getAdvice(boolean hitSoft, String dealerCard, String playerCard1, String playerCard2,
                             final CardSelectedViewModel viewModel) {
 
+
         cardAdviceRetrofitClient = getRetrofitClient();
 
         Call<String> call = cardAdviceRetrofitClient.getAdvice(hitSoft, dealerCard, playerCard1, playerCard2);
@@ -26,7 +27,7 @@ public class ClientCardAdviceServiceNetworkImpl implements ClientCardAdviceServi
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
                     String advice = response.body();
-                    viewModel.setAdviceFromNetworkResponse(advice);
+                    viewModel.setAdviceFromNetworkResponse(HandAdvice.fromEnum(advice));
                 }
             }
 
