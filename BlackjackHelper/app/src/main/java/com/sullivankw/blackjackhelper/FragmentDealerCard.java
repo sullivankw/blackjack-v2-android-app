@@ -1,6 +1,5 @@
 package com.sullivankw.blackjackhelper;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

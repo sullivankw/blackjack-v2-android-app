@@ -1,25 +1,45 @@
 package com.sullivankw.blackjackhelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum HandAdvice {
-    HIT,
-    STAY,
-    SPLIT,
-    SPLIT_IF_DOUBLE_ALLOWED_OR_HIT,
-    SURRENDER_IF_ALLOWED_OR_SPLIT,
-    SURRENDER_IF_ALLOWED_OR_HIT,
-    SURRENDER_IF_ALLOWED_OR_STAND,
-    DOUBLE_OR_HIT,
-    DOUBLE_OR_STAND,
-    BLACKJACK,
-    PLACEHOLDER;
+    HIT("HIT"),
+    STAY("STAY"),
+    SPLIT("SPLIT"),
+    SPLIT_IF_DOUBLE_ALLOWED_OR_HIT("SPLIT IF DOUBLE ALLOWED OR HIT"),
+    SURRENDER_IF_ALLOWED_OR_SPLIT("SURRENDER IF ALLOWED OR SPLIT"),
+    SURRENDER_IF_ALLOWED_OR_HIT("SURRENDER IF ALLOWED OR HIT"),
+    SURRENDER_IF_ALLOWED_OR_STAND("SURRENDER IF ALLOWED OR STAND"),
+    DOUBLE_OR_HIT("DOUBLE OR HIT"),
+    DOUBLE_OR_STAND("DOUBLE OR STAND"),
+    BLACKJACK("BLACKJACK");
+
+    private String displayValue;
+    private List<String> displayValues;
+
+    HandAdvice(String displayValue) {
+        this.displayValue = displayValue;
+    }
 
     public static String fromEnum(String value) throws IllegalArgumentException {
-        for (HandAdvice v : HandAdvice.values()) {
-            if (v.name().equals(value)) {
-                String strippedValue = value.replace("_", " ");
-                return strippedValue;
+        for (HandAdvice advice : HandAdvice.values()) {
+            if (advice.name().equals(value)) {
+                return advice.getDisplayValue();
             }
         }
         throw new IllegalArgumentException();
+    }
+
+    public String getDisplayValue() {
+        return displayValue;
+    }
+
+    public static List<String> getDisplayValues() {
+        List<String> displayValues = new ArrayList<>();
+        for (HandAdvice advice : HandAdvice.values()) {
+            displayValues.add(advice.getDisplayValue());
+        }
+        return displayValues;
     }
 }

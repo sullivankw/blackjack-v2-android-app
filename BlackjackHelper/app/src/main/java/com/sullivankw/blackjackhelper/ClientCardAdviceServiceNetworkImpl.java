@@ -1,5 +1,7 @@
 package com.sullivankw.blackjackhelper;
 
+import android.arch.lifecycle.ViewModel;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -7,6 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ClientCardAdviceServiceNetworkImpl implements ClientCardAdviceService{
+    private static ClientCardAdviceServiceNetworkImpl service;
 
     private static final String URL = "http://10.0.2.2:8080/";
     //If you are referring your localhost on your system from the Android emulator then you have to
@@ -14,13 +17,18 @@ public class ClientCardAdviceServiceNetworkImpl implements ClientCardAdviceServi
     //http://localhost:8080/advice?hitSoft=false&dealerCard=five&playerCard1=eight&playerCard2=three
     private CardAdviceRetrofitClient cardAdviceRetrofitClient;
 
+    public static ClientCardAdviceServiceNetworkImpl getClientCardAdviceServiceNetwork() {
+        if (service == null) {
+            service = new ClientCardAdviceServiceNetworkImpl();
+        }
+        return service;
+    }
+
     @Override
     public String getAdvice(boolean hitSoft, String dealerCard, String playerCard1, String playerCard2,
-                            final CardSelectedViewModel viewModel) {
-
+                            final BaseViewModel viewModel) {
 
         cardAdviceRetrofitClient = getRetrofitClient();
-
         Call<String> call = cardAdviceRetrofitClient.getAdvice(hitSoft, dealerCard, playerCard1, playerCard2);
         call.enqueue(new Callback<String>() {
             @Override

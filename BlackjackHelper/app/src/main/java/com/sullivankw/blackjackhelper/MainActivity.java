@@ -12,6 +12,9 @@ import android.support.v4.view.ViewPager;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Switch;
+import android.widget.Toast;
 
 public class MainActivity extends BaseActivity {
 
@@ -20,6 +23,7 @@ public class MainActivity extends BaseActivity {
     private TabLayout tabLayout;
     private CardSelectedViewModel viewModel;
     private BottomNavigationView bottomNav;
+    private Switch switchVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,13 @@ public class MainActivity extends BaseActivity {
                 if (integer != null) {
                     viewPager.setCurrentItem(integer);
                     if (integer == 3) {
-                        viewModel.getAdvice();
+                        if (viewModel.getPlayerCardOne().getValue() != null && viewModel.getPlayerCardTwo().getValue() != null
+                                && viewModel.getDealerCard().getValue() != null) {
+                            viewModel.getAdvice();
+                        } else {
+                            //TODO this works if you dont just click on the rESULTS directly
+                            Toast.makeText(getBaseContext(), "All cards need to be selected.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }
@@ -50,11 +60,41 @@ public class MainActivity extends BaseActivity {
     }
 
     private void findViews() {
+        switchVersion = findViewById(R.id.switchVersion);
+        switchVersion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (switchVersion.isChecked()) {
+                    viewModel.setHitSoft17(true);
+                }
+                if (!switchVersion.isChecked()) {
+                    viewModel.setHitSoft17(false);
+                }
+            }
+        });
     }
 
     private void setUpTabLayout() {
         tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 3) {
+                    Toast.makeText(getBaseContext(), "tab chosen", Toast.LENGTH_SHORT).show();
+                }
+             }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     private void setUpViewPager() {

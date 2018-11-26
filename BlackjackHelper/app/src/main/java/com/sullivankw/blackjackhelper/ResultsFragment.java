@@ -83,6 +83,7 @@ public class ResultsFragment extends BaseFragment implements View.OnClickListene
     public void onClick(View v) {
         if (v.equals(v.findViewById(R.id.returnBtn))) {
             viewModel.setNextPage(0);
+            viewModel.resetValues();
         }
     }
 
@@ -95,18 +96,25 @@ public class ResultsFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        //todo also prevent this screen from being visible unless all three cards selected
+
         if (isVisibleToUser) {
+            if (getActivity() == null) {
+                return;
+            }
             dealerCard = ViewModelProviders.of(getActivity()).
                     get(CardSelectedViewModel.class).getDealerCard().getValue();
-            dealerCardText.setText(dealerCard);
-            dealerCardText.setText(getResources().getString(R.string.dealer_message_results, dealerCard));
-
             playerCard1 = ViewModelProviders.of(getActivity()).
                     get(CardSelectedViewModel.class).getPlayerCardOne().getValue();
             playerCard2 = ViewModelProviders.of(getActivity()).
                     get(CardSelectedViewModel.class).getPlayerCardTwo().getValue();
+            if (dealerCard == null || playerCard1 == null || playerCard2 == null) {
 
-            playerCardsText.setText(getResources().getString(R.string.player_message_results, playerCard1, playerCard2));
+            } else {
+                dealerCardText.setText(getResources().getString(R.string.dealer_message_results, dealerCard));
+                playerCardsText.setText(getResources().getString(R.string.player_message_results, playerCard1, playerCard2));
+            }
+
 
         }
     }

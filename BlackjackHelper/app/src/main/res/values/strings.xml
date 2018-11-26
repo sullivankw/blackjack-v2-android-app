@@ -24,4 +24,7 @@
     <string name="new_hand">New Hand</string>
     <string name="get_help">Get Help</string>
     <string name="practice">Practice</string>
+    <string name="stay_soft_17_hit_soft_17">Stay Soft 17 / Hit Soft 17</string>
+    <string name="try_again">Try Again</string>
+    <string name="guess">Guess</string>
 </resources>

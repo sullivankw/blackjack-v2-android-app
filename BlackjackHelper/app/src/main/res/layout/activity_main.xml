@@ -37,5 +37,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/nav_menu" />
 
+    <Switch
+        android:id="@+id/switchVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/stay_soft_17_hit_soft_17"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
