@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BlackjackHelper</string>
+    <string name="app_name">Blackjack Helper</string>
     <string name="item_1">Get Help</string>
     <string name="item_2">Practice Mode (Coming Soon!)</string>
     <string name="select_dealer_card_message">What\'s the dealer showing?</string>
@@ -22,14 +22,14 @@
     <string name="dealer_message_results">Dealer\'s Card: %1$s</string>
     <string name="player_message_results">Player\'s Cards: %1$s and %2$s</string>
     <string name="new_hand">New Hand</string>
-    <string name="get_help">Get Help</string>
-    <string name="practice">Practice</string>
+    <string name="get_help">Hand Help</string>
+    <string name="practice">Practice Mode</string>
     <string name="stay_soft_17_hit_soft_17">Stay Soft 17 / Hit Soft 17</string>
     <string name="try_again">Try Again</string>
     <string name="guess">Guess</string>
     <string name="dealer_has">Dealer Has:</string>
     <string name="you_have">You Have:</string>
-    <string name="you_should">You Should?</string>
+    <string name="you_should">What Should You Do?</string>
     <string name="randomly_selected_dealer_card">randomly selected dealer card</string>
     <string name="randomly_selected_first_player_card">randomly selected first player card</string>
     <string name="randomly_selected_second_player_card">randomly selected second player card</string>
