@@ -32,7 +32,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnTwo"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
@@ -46,7 +46,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnThree"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
@@ -60,7 +60,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnFour"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
@@ -74,7 +74,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnFive"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
@@ -89,7 +89,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnSix"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
@@ -103,7 +103,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnSeven"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
@@ -117,7 +117,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnEight"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
@@ -131,7 +131,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnNine"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
@@ -146,7 +146,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnTen"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
@@ -160,7 +160,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnJack"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
@@ -174,7 +174,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnQueen"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
@@ -188,7 +188,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnKing"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
@@ -203,7 +203,7 @@
 
         <Button
             android:id="@+id/playerCardTwoBtnAce"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="40sp"
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_btn"
