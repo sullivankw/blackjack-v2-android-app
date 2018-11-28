@@ -15,8 +15,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.sullivankw.blackjackhelper.base.BaseActivity;
-import com.sullivankw.blackjackhelper.CardImage;
-import com.sullivankw.blackjackhelper.HandAdvice;
+import com.sullivankw.blackjackhelper.enums.CardImage;
+import com.sullivankw.blackjackhelper.enums.HandAdvice;
 import com.sullivankw.blackjackhelper.R;
 import com.sullivankw.blackjackhelper.jar.BlackjackHelperServiceException;
 
@@ -126,8 +126,8 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
             try {
                 viewModel.getHandHelp();
             } catch (BlackjackHelperServiceException e) {
-                Log.e("service-call-error", e.toString());
-                Toast.makeText(getBaseContext(), "Unexpexted error. Try again.", Toast.LENGTH_SHORT).show();
+                Log.e("service-error", e.toString());
+                Toast.makeText(getBaseContext(), "Unexpected error. Try again.", Toast.LENGTH_SHORT).show();
             }
         }
     }

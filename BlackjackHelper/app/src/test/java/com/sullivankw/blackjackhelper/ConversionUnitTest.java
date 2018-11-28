@@ -1,5 +1,7 @@
 package com.sullivankw.blackjackhelper;
 
+import com.sullivankw.blackjackhelper.enums.HandAdvice;
+
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.sullivankw.blackjackhelper;
+package com.sullivankw.blackjackhelper.enums;
 
 import java.util.ArrayList;
 import java.util.List;

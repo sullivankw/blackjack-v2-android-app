@@ -1,4 +1,6 @@
-package com.sullivankw.blackjackhelper;
+package com.sullivankw.blackjackhelper.enums;
+
+import com.sullivankw.blackjackhelper.R;
 
 public enum CardImage {
 

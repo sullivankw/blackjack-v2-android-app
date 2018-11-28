@@ -96,8 +96,6 @@ public class PlayerCardOneFragment extends BaseFragment implements View.OnClickL
 
     }
 
-
-
     @Override
     public void onClick(View v) {
 

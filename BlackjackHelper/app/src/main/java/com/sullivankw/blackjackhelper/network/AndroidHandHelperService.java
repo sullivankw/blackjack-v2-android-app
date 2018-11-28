@@ -1,6 +1,6 @@
 package com.sullivankw.blackjackhelper.network;
 
-import com.sullivankw.blackjackhelper.HandAdvice;
+import com.sullivankw.blackjackhelper.enums.HandAdvice;
 import com.sullivankw.blackjackhelper.base.BaseViewModel;
 import com.sullivankw.blackjackhelper.jar.BlackjackHelperServiceException;
 import com.sullivankw.blackjackhelper.jar.HandHelperService;
@@ -15,9 +15,6 @@ public class AndroidHandHelperService {
     private static AndroidHandHelperService service;
 
     private static final String URL = "http://10.0.2.2:8080/";
-    //If you are referring your localhost on your system from the Android emulator then you have to
-    // use http://10.0.2.2:8080/ Because Android emulator runs in a Virtual Machine therefore here 127.0.0.1 or localhost will be emulator's own loopback address.
-    //http://localhost:8080/advice?hitSoft=false&dealerCard=five&playerCard1=eight&playerCard2=three
 
     private AndroidHandHelperService() {
     }

@@ -1,6 +1,6 @@
 package com.sullivankw.blackjackhelper.jar;
 
-import com.sullivankw.blackjackhelper.HandAdvice;
+import com.sullivankw.blackjackhelper.enums.HandAdvice;
 
 public class HandHelperService {
     private static HandHelperService handHelperService;
