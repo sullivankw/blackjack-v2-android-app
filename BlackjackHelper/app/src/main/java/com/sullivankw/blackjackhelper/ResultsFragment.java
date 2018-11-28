@@ -44,13 +44,12 @@ public class ResultsFragment extends BaseFragment implements View.OnClickListene
     private void configureViewModel() throws ActivityNotFoundException {
         /**
          * the card variables are set with each btn click so no need to observe those.
-         * TODO will work diff over no network, so will need alt paths here
-         * TODO note that this method gets called way before its visible, so, we dont yet have
-         * pcard 1 and 2....so they cant be renederd. observers would prolly fix it...but wbetter way???
-         *
          * **/
         viewModel = getViewModel();
 
+        if (getActivity() == null) {
+            return;
+        }
         viewModel.getHandHelpResponse().observe(getActivity(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -66,7 +65,7 @@ public class ResultsFragment extends BaseFragment implements View.OnClickListene
             @Override
             public void onChanged(@Nullable Throwable t) {
                 if (t != null) {
-                    Log.d(NETWORK_ERROR, t.getMessage());
+                    Log.e(NETWORK_ERROR, t.getMessage());
                     Toast.makeText(getActivity(), "Error retrieving advice", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -91,15 +90,13 @@ public class ResultsFragment extends BaseFragment implements View.OnClickListene
 
     /**
      * Since using a View Pager the views are created before they are actually visible.
-     * The flow is such that the values needed to set in the text views arent set until just before
-     * the fragment is actual in the foreground. Normally, overriding onResume would work, not here
+     * The flow is such that the values needed to set in the text views aren't set until just before
+     * the fragment is actually in the foreground. Normally, overriding onStart would work usually, not for VP
      * This override works
      * **/
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        //todo also prevent this screen from being visible unless all three cards selected
-
         if (isVisibleToUser) {
             if (getActivity() == null) {
                 return;
@@ -110,14 +107,9 @@ public class ResultsFragment extends BaseFragment implements View.OnClickListene
                     get(CardSelectedViewModel.class).getPlayerCardOne().getValue();
             playerCard2 = ViewModelProviders.of(getActivity()).
                     get(CardSelectedViewModel.class).getPlayerCardTwo().getValue();
-            if (dealerCard == null || playerCard1 == null || playerCard2 == null) {
 
-            } else {
                 dealerCardText.setText(getResources().getString(R.string.dealer_message_results, dealerCard));
                 playerCardsText.setText(getResources().getString(R.string.player_message_results, playerCard1, playerCard2));
-            }
-
-
         }
     }
 }

@@ -10,6 +10,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,11 +54,12 @@ public class MainActivity extends BaseActivity {
                             try {
                                 viewModel.getHandHelp();
                             } catch (BlackjackHelperServiceException e) {
-                                //todo
+                                Log.e("service-error", e.toString());
+                                Toast.makeText(getBaseContext(), "Unexpected error. Try again", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            //TODO this works if you dont just click on the rESULTS directly
-                            Toast.makeText(getBaseContext(), "All cards need to be selected.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(), "All cards need to be selected to get hand help. " +
+                                    "Go back and select all three.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

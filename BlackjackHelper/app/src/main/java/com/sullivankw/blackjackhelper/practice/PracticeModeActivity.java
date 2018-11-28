@@ -126,8 +126,8 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
             try {
                 viewModel.getHandHelp();
             } catch (BlackjackHelperServiceException e) {
-                //TODO
-                e.printStackTrace();
+                Log.e("service-call-error", e.toString());
+                Toast.makeText(getBaseContext(), "Unexpexted error. Try again.", Toast.LENGTH_SHORT).show();
             }
         }
     }

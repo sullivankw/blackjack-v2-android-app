@@ -20,7 +20,7 @@ public enum CardValue {
     private int numericValue;
     private static String FAILURE_CARD_MSG = " is not valid in a standard deck of cards";
     
-    private CardValue(String card, int numericValue) {
+    CardValue(String card, int numericValue) {
     	this.card = card;
         this.numericValue = numericValue;
     }

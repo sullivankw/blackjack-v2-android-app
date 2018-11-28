@@ -63,7 +63,7 @@ public class AndroidHandHelperService {
                 viewModel.setNetworkError(t);
             }
         });
-        //non network version impl will return the String advice
+
         return null;
     }
 
