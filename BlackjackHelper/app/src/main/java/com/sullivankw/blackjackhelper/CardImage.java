@@ -33,10 +33,10 @@ public enum CardImage {
         return resourceId;
     }
 
-    public static int getResourceIdByPosition(int position) throws IllegalArgumentException{
+    public static CardImage getCardImageByPosition(int position) throws IllegalArgumentException{
         for (CardImage cardImage : CardImage.values()) {
             if (cardImage.getPosition() == position) {
-                return cardImage.getResourceId();
+                return cardImage;
             }
         }
         throw new IllegalArgumentException();

@@ -1,4 +1,4 @@
-package com.sullivankw.blackjackhelper;
+package com.sullivankw.blackjackhelper.base;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.sullivankw.blackjackhelper.MainActivity;
+import com.sullivankw.blackjackhelper.R;
 import com.sullivankw.blackjackhelper.practice.PracticeModeActivity;
 
 public class BaseActivity extends AppCompatActivity {
@@ -20,12 +22,10 @@ public class BaseActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case (R.id.navToMain): {
                         startActivity(new Intent(getBaseContext(), MainActivity.class));
-                        Toast.makeText(getBaseContext(), "it does rego: " + R.id.navToMain, Toast.LENGTH_SHORT).show();
                         break;
                     }
                     case (R.id.navToPractice): {
                         startActivity(new Intent(getBaseContext(), PracticeModeActivity.class));
-                        Toast.makeText(getBaseContext(), "it does rego: " + R.id.navToPractice, Toast.LENGTH_SHORT).show();
                         break;
                     }
                     default:

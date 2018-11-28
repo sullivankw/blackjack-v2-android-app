@@ -3,6 +3,8 @@ package com.sullivankw.blackjackhelper;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
+import com.sullivankw.blackjackhelper.base.BaseViewModel;
+
 public class CardSelectedViewModel extends BaseViewModel {
 
     private MutableLiveData<Integer> nextPage;

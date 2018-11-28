@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sullivankw.blackjackhelper.base.BaseFragment;
+
 public class ResultsFragment extends BaseFragment implements View.OnClickListener {
 
     private TextView dealerCardText;
@@ -49,7 +51,7 @@ public class ResultsFragment extends BaseFragment implements View.OnClickListene
          * **/
         viewModel = getViewModel();
 
-        viewModel.getAdviceFromNetworkResponse().observe(getActivity(), new Observer<String>() {
+        viewModel.getHandHelpResponse().observe(getActivity(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 if (s != null) {

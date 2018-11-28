@@ -1,10 +1,10 @@
-package com.sullivankw.blackjackhelper;
+package com.sullivankw.blackjackhelper.network;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface CardAdviceRetrofitClient {
+public interface HandHelperRetrofitClient {
 
         @GET("advice")
         Call<String> getAdvice(@Query("hitSoft") boolean hitSoft, @Query("dealerCard") String dealerCard,

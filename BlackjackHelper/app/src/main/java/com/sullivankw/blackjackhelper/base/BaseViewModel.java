@@ -1,30 +1,33 @@
-package com.sullivankw.blackjackhelper;
+package com.sullivankw.blackjackhelper.base;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.util.Log;
+
+import com.sullivankw.blackjackhelper.jar.BlackjackHelperServiceException;
+import com.sullivankw.blackjackhelper.network.AndroidHandHelperService;
 
 public class BaseViewModel extends ViewModel {
 
     private MutableLiveData<String> dealerCard;
     private MutableLiveData<String> playerCardOne;
     private MutableLiveData<String> playerCardTwo;
-    private MutableLiveData<String> advice;
+    private MutableLiveData<String> handHelp;
     private MutableLiveData<Throwable> t;
 
-    private ClientCardAdviceServiceNetworkImpl clientCardAdviceServiceNetwork;
+    private AndroidHandHelperService androidHandHelperService;
     private boolean hitSoft17;
 
 
     public BaseViewModel() {
-        if (clientCardAdviceServiceNetwork == null) {
-            clientCardAdviceServiceNetwork = ClientCardAdviceServiceNetworkImpl.getClientCardAdviceServiceNetwork();
-        }
+            androidHandHelperService = AndroidHandHelperService.getAndroidHandHelperService();
     }
 
-    public String getAdvice() {
-        return clientCardAdviceServiceNetwork.getAdvice(getHitSoft17(), dealerCard.getValue(),
-                playerCardOne.getValue(), playerCardTwo.getValue(), this);
+    //todo set better than hardcoded http method boolean
+    public String getHandHelp() throws BlackjackHelperServiceException {
+        return androidHandHelperService.getHandHelp(getHitSoft17(), dealerCard.getValue(),
+                playerCardOne.getValue(), playerCardTwo.getValue(), this, false);
     }
 
     public void setHitSoft17(boolean hitSoft17) {
@@ -51,19 +54,19 @@ public class BaseViewModel extends ViewModel {
         return t;
     }
 
-    public void setAdviceFromNetworkResponse(String advice) {
-        if (this.advice == null) {
-            this.advice = new MutableLiveData<>();
+    public void setHandHelpResponse(String handHelp) {
+        if (this.handHelp == null) {
+            this.handHelp = new MutableLiveData<>();
         }
-        this.advice.setValue(advice);
+        this.handHelp.setValue(handHelp);
     }
 
-    public LiveData<String> getAdviceFromNetworkResponse() {
-        if (advice == null) {
-            advice = new MutableLiveData<>();
-            advice.setValue(null);
+    public LiveData<String> getHandHelpResponse() {
+        if (handHelp == null) {
+            handHelp = new MutableLiveData<>();
+            handHelp.setValue(null);
         }
-        return advice;
+        return handHelp;
     }
 
     public LiveData<String> getDealerCard() {
@@ -115,6 +118,6 @@ public class BaseViewModel extends ViewModel {
         playerCardTwo.setValue(null);
         playerCardOne.setValue(null);
         dealerCard.setValue(null);
-        advice.setValue(null);
+        handHelp.setValue(null);
     }
 }

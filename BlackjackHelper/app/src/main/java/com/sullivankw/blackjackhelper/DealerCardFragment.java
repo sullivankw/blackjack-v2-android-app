@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class FragmentPlayerCardTwo extends BaseFragment implements View.OnClickListener {
+import com.sullivankw.blackjackhelper.base.BaseFragment;
+
+public class DealerCardFragment extends BaseFragment implements View.OnClickListener {
 
     private Button buttonTwo;
     private Button buttonThree;
@@ -24,38 +26,37 @@ public class FragmentPlayerCardTwo extends BaseFragment implements View.OnClickL
     private Button buttonKing;
     private Button buttonAce;
 
-    private int[] buttonIdArray;
     private CardSelectedViewModel viewModel;
+    private int[] buttonIdArray;
 
-    public FragmentPlayerCardTwo() {
+    public DealerCardFragment() {
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_player_card_two, container, false);
+        View view = inflater.inflate(R.layout.fragment_dealer_card, container, false);
         createBtnIdArray();
         setupViews(view);
         setupListeners();
         viewModel = getViewModel();
-
         return view;
     }
 
     private void createBtnIdArray() {
         buttonIdArray = new int[13];
-        buttonIdArray[0] = R.id.playerCardTwoBtnTwo;
-        buttonIdArray[1] = R.id.playerCardTwoBtnThree;
-        buttonIdArray[2] = R.id.playerCardTwoBtnFour;
-        buttonIdArray[3] = R.id.playerCardTwoBtnFive;
-        buttonIdArray[4] = R.id.playerCardTwoBtnSix;
-        buttonIdArray[5] = R.id.playerCardTwoBtnSeven;
-        buttonIdArray[6] = R.id.playerCardTwoBtnEight;
-        buttonIdArray[7] = R.id.playerCardTwoBtnNine;
-        buttonIdArray[8] = R.id.playerCardTwoBtnTen;
-        buttonIdArray[9] = R.id.playerCardTwoBtnJack;
-        buttonIdArray[10] = R.id.playerCardTwoBtnQueen;
-        buttonIdArray[11] = R.id.playerCardTwoBtnKing;
-        buttonIdArray[12] = R.id.playerCardTwoBtnAce;
+        buttonIdArray[0] = R.id.buttonTwo;
+        buttonIdArray[1] = R.id.buttonThree;
+        buttonIdArray[2] = R.id.buttonFour;
+        buttonIdArray[3] = R.id.buttonFive;
+        buttonIdArray[4] = R.id.buttonSix;
+        buttonIdArray[5] = R.id.buttonSeven;
+        buttonIdArray[6] = R.id.buttonEight;
+        buttonIdArray[7] = R.id.buttonNine;
+        buttonIdArray[8] = R.id.buttonTen;
+        buttonIdArray[9] = R.id.buttonJack;
+        buttonIdArray[10] = R.id.buttonQueen;
+        buttonIdArray[11] = R.id.buttonKing;
+        buttonIdArray[12] = R.id.buttonAce;
     }
 
     private void setupListeners() {
@@ -93,12 +94,13 @@ public class FragmentPlayerCardTwo extends BaseFragment implements View.OnClickL
         buttonAce = buttons[12];
     }
 
+
     @Override
     public void onClick(View v) {
 
         String card = convertButtonClickToCardSelected(v.getId(), buttonIdArray);
-        viewModel.setPlayerCardTwo(card);
-        viewModel.setNextPage(3);
-    }
 
+        viewModel.setDealerCard(card);
+        viewModel.setNextPage(1);
+    }
 }

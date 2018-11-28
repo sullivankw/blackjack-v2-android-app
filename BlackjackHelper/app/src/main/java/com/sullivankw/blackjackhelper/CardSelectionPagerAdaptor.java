@@ -8,9 +8,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class CardSelectionPagerAdaptor extends FragmentPagerAdapter {
 
-    private FragmentDealerCard fragmentDealerCard;
-    private FragmentPlayerCardOne fragmentPlayerCardOne;
-    private FragmentPlayerCardTwo fragmentPlayerCardTwo;
+    private DealerCardFragment fragmentDealerCard;
+    private PlayerCardOneFragment fragmentPlayerCardOne;
+    private PlayerCardTwoFragment fragmentPlayerCardTwo;
     private ResultsFragment resultsFragment;
 
     @Override
@@ -20,9 +20,9 @@ public class CardSelectionPagerAdaptor extends FragmentPagerAdapter {
 
     public CardSelectionPagerAdaptor(FragmentManager fm) {
         super(fm);
-        fragmentDealerCard = new FragmentDealerCard();
-        fragmentPlayerCardOne = new FragmentPlayerCardOne();
-        fragmentPlayerCardTwo = new FragmentPlayerCardTwo();
+        fragmentDealerCard = new DealerCardFragment();
+        fragmentPlayerCardOne = new PlayerCardOneFragment();
+        fragmentPlayerCardTwo = new PlayerCardTwoFragment();
         resultsFragment = new ResultsFragment();
     }
 
@@ -55,10 +55,10 @@ public class CardSelectionPagerAdaptor extends FragmentPagerAdapter {
                 return "Dealer Card";
             }
             case 1 : {
-                return  "Player's First Card";
+                return  "Your First Card";
             }
             case 2 : {
-                return "Player's Second Card";
+                return "Your Next Card";
             }
             case 3 : {
                 return "Results";

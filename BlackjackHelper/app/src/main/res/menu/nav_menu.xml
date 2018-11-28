@@ -2,10 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navToMain"
-        android:icon="@android:drawable/btn_dialog"
         android:title="@string/get_help" />
     <item
         android:id="@+id/navToPractice"
-        android:icon="@android:drawable/divider_horizontal_dark"
         android:title="@string/practice" />
 </menu>

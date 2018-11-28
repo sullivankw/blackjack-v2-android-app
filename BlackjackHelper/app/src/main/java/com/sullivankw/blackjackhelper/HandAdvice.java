@@ -11,12 +11,11 @@ public enum HandAdvice {
     SURRENDER_IF_ALLOWED_OR_SPLIT("SURRENDER IF ALLOWED OR SPLIT"),
     SURRENDER_IF_ALLOWED_OR_HIT("SURRENDER IF ALLOWED OR HIT"),
     SURRENDER_IF_ALLOWED_OR_STAND("SURRENDER IF ALLOWED OR STAND"),
-    DOUBLE_OR_HIT("DOUBLE OR HIT"),
-    DOUBLE_OR_STAND("DOUBLE OR STAND"),
+    DOUBLE_OR_HIT("DOUBLE IF ALLOWED OR HIT"),
+    DOUBLE_OR_STAND("DOUBLE IF ALLOWED OR STAND"),
     BLACKJACK("BLACKJACK");
 
     private String displayValue;
-    private List<String> displayValues;
 
     HandAdvice(String displayValue) {
         this.displayValue = displayValue;
@@ -38,7 +37,8 @@ public enum HandAdvice {
     public static List<String> getDisplayValues() {
         List<String> displayValues = new ArrayList<>();
         for (HandAdvice advice : HandAdvice.values()) {
-            displayValues.add(advice.getDisplayValue());
+            String displayValue = advice.getDisplayValue();
+            displayValues.add(displayValue);
         }
         return displayValues;
     }

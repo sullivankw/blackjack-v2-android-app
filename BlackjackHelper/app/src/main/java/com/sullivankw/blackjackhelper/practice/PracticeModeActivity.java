@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,10 +14,11 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.sullivankw.blackjackhelper.BaseActivity;
+import com.sullivankw.blackjackhelper.base.BaseActivity;
 import com.sullivankw.blackjackhelper.CardImage;
 import com.sullivankw.blackjackhelper.HandAdvice;
 import com.sullivankw.blackjackhelper.R;
+import com.sullivankw.blackjackhelper.jar.BlackjackHelperServiceException;
 
 import java.util.List;
 import java.util.Random;
@@ -37,23 +39,10 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_mode);
         setupViews();
+        setupViewModel();
         setupImageResources();
-        viewModel = ViewModelProviders.of(this).get(PracticeModeViewModel.class);
-        viewModel.getAdviceFromNetworkResponse().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                if (s != null) {
-                    String msg;
-                    if (HandAdvice.fromEnum(s).equals(selection)) {
-                        msg = "Correct!";
-                    } else {
-                        msg = "You should of: " + s;
-                    }
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
-                    setupImageResources();
-                }
-            }
-        });
+        setupViewModel();
+
         bottomNav = setupBottomNav(R.id.bottom_nav_practice_layout);
         spinner = findViewById(R.id.spinner);
         populateSpinner();
@@ -62,12 +51,36 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selection = adapterView.getItemAtPosition(i).toString();
+                viewModel.setSelection(selection);
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+    }
+
+    private void setupViewModel() {
+        viewModel = ViewModelProviders.of(this).get(PracticeModeViewModel.class);
+        viewModel.getHandHelpResponse().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                if (s != null) {
+                    String msg;
+                    //already been converted before being returned from service layer
+                    if (s.equals(viewModel.getSelection())) {
+                        msg = "Correct!";
+                    } else {
+                        msg = "Nope. If dealer has " + viewModel.getDealerCard().getValue() + " you have " +
+                                viewModel.getPlayerCardOne().getValue() + " and "
+                                + viewModel.getPlayerCardTwo().getValue() + " You should: " + s;
+                    }
+                    viewModel.resetValues();
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
+                    setupImageResources();
+                }
             }
         });
     }
@@ -86,13 +99,20 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
         int player1Random = new Random().nextInt(13);
         int player2Random = new Random().nextInt(13);
 
-        imgViewDealer.setImageResource(CardImage.getResourceIdByPosition(dealerRandom));
-        imgViewPCard1.setImageResource(CardImage.getResourceIdByPosition(player1Random));
-        imgViewPCard2.setImageResource(CardImage.getResourceIdByPosition(player2Random));
+        CardImage dealerCardImage = CardImage.getCardImageByPosition(dealerRandom);
+        CardImage playerCardImage1 = CardImage.getCardImageByPosition(player1Random);
+        CardImage playerCardImage2 = CardImage.getCardImageByPosition(player2Random);
+
+        imgViewDealer.setImageResource(dealerCardImage.getResourceId());
+        imgViewPCard1.setImageResource(playerCardImage1.getResourceId());
+        imgViewPCard2.setImageResource(playerCardImage2.getResourceId());
+
+        viewModel.setDealerCard(dealerCardImage.name());
+        viewModel.setPlayerCardOne(playerCardImage1.name());
+        viewModel.setPlayerCardTwo(playerCardImage2.name());
     }
 
-    private void populateSpinner() {
-        //TODO if players cards show blackjack supress and retry
+    public void populateSpinner() {
         List<String> items = HandAdvice.getDisplayValues();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
 
@@ -103,7 +123,12 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.guessBtn) {
-            viewModel.getAdvice();
+            try {
+                viewModel.getHandHelp();
+            } catch (BlackjackHelperServiceException e) {
+                //TODO
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -16,6 +16,9 @@ import android.view.View;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.sullivankw.blackjackhelper.base.BaseActivity;
+import com.sullivankw.blackjackhelper.jar.BlackjackHelperServiceException;
+
 public class MainActivity extends BaseActivity {
 
     private ViewPager viewPager;
@@ -47,7 +50,11 @@ public class MainActivity extends BaseActivity {
                     if (integer == 3) {
                         if (viewModel.getPlayerCardOne().getValue() != null && viewModel.getPlayerCardTwo().getValue() != null
                                 && viewModel.getDealerCard().getValue() != null) {
-                            viewModel.getAdvice();
+                            try {
+                                viewModel.getHandHelp();
+                            } catch (BlackjackHelperServiceException e) {
+                                //todo
+                            }
                         } else {
                             //TODO this works if you dont just click on the rESULTS directly
                             Toast.makeText(getBaseContext(), "All cards need to be selected.", Toast.LENGTH_SHORT).show();
@@ -80,8 +87,9 @@ public class MainActivity extends BaseActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 3) {
-                    Toast.makeText(getBaseContext(), "tab chosen", Toast.LENGTH_SHORT).show();
+                if (tab.getPosition() == 3 && (viewModel.getDealerCard().getValue() == null ||
+                        viewModel.getPlayerCardOne().getValue() == null || viewModel.getPlayerCardTwo().getValue() == null)) {
+                    Toast.makeText(getBaseContext(), "All three cards must be selected to get help.", Toast.LENGTH_SHORT).show();
                 }
              }
 
