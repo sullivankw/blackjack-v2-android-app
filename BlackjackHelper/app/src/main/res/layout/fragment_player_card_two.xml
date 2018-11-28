@@ -11,8 +11,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
-        >
+        tools:context=".MainActivity">
 
 
         <TextView
@@ -40,6 +39,8 @@
             android:background="@drawable/rounded_btn"
             android:text="@string/_2"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnThree"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,6 +53,8 @@
             android:background="@drawable/rounded_btn"
             android:text="@string/_3"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnFour"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnTwo"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,6 +67,8 @@
             android:background="@drawable/rounded_btn"
             android:text="@string/_4"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnFive"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnThree"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,9 +78,12 @@
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_btn"
             android:text="@string/_5"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnFour"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,6 +96,8 @@
             android:background="@drawable/rounded_btn"
             android:text="@string/_6"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnSeven"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnTwo" />
 
@@ -100,6 +110,8 @@
             android:background="@drawable/rounded_btn"
             android:text="@string/_7"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnEight"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnSix"
             app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnThree" />
 
@@ -112,6 +124,8 @@
             android:background="@drawable/rounded_btn"
             android:text="@string/_8"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnNine"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnSeven"
             app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnFour" />
 
@@ -121,9 +135,12 @@
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_btn"
             android:text="@string/_9"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnEight"
             app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnFive" />
 
@@ -136,6 +153,8 @@
             android:background="@drawable/rounded_btn"
             android:text="@string/_10"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnJack"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnSix" />
 
@@ -148,6 +167,8 @@
             android:background="@drawable/rounded_btn"
             android:text="@string/j"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnQueen"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnTen"
             app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnSeven" />
 
@@ -160,6 +181,8 @@
             android:background="@drawable/rounded_btn"
             android:text="@string/q"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnKing"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnJack"
             app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnEight" />
 
@@ -169,9 +192,12 @@
             android:layout_height="40sp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_btn"
             android:text="@string/k"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnQueen"
             app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnNine" />
 

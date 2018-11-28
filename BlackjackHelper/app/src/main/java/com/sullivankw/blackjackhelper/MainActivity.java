@@ -11,8 +11,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -112,27 +110,6 @@ public class MainActivity extends BaseActivity {
         viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(pagerAdaptor);
         viewPager.setOffscreenPageLimit(2);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.item1: {
-
-            }
-            case R.id.item2: {
-
-            }
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_items, menu);
-        return true;
     }
 
     @Override
