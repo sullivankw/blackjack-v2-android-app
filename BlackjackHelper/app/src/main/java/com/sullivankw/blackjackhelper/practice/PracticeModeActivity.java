@@ -75,10 +75,10 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
                     } else {
                         msg = "Nope. If dealer has " + viewModel.getDealerCard().getValue() + " you have " +
                                 viewModel.getPlayerCardOne().getValue() + " and "
-                                + viewModel.getPlayerCardTwo().getValue() + " You should: " + s;
+                                + viewModel.getPlayerCardTwo().getValue() + " you should: " + s;
                     }
                     viewModel.resetValues();
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
                     setupImageResources();
                 }
             }

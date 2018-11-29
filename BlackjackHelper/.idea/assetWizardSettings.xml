@@ -47,9 +47,10 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="ff7c42" />
+                                      <entry key="backgroundColor" value="ff7043" />
                                       <entry key="foregroundAssetType" value="TEXT" />
                                       <entry key="legacyIconShape" value="CIRCLE" />
+                                      <entry key="outputName" value="ic2_launcher" />
                                     </map>
                                   </option>
                                 </PersistentState>

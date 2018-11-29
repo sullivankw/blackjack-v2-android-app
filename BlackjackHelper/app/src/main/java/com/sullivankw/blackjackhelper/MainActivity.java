@@ -83,6 +83,7 @@ public class MainActivity extends BaseActivity {
 
     private void setUpTabLayout() {
         tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

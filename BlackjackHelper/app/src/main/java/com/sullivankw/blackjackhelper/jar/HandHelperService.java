@@ -39,6 +39,10 @@ public class HandHelperService {
 		} catch (IllegalArgumentException e) {
 			throw new BlackjackHelperServiceException(e.getMessage());
 		}
+
+		if (playerCardSum == 21) {
+		    return HandAdvice.BLACKJACK.name();
+        }
 		
         //------------------HANDLES SOFT ACES---------------------------------
         if (playerCard1.equals("A") || playerCard2.equals("A") && playerCard1 != playerCard2) {
@@ -51,8 +55,6 @@ public class HandHelperService {
                         return HandAdvice.DOUBLE_OR_STAND.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 3:
@@ -63,8 +65,6 @@ public class HandHelperService {
                         return HandAdvice.DOUBLE_OR_STAND.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     } else if (playerCardSum == 17) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
                     }
@@ -76,8 +76,6 @@ public class HandHelperService {
                         return HandAdvice.DOUBLE_OR_STAND.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     } else if (playerCardSum == 15 || playerCardSum == 16 || playerCardSum == 17) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
                     }
@@ -90,8 +88,6 @@ public class HandHelperService {
                         return HandAdvice.DOUBLE_OR_STAND.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 6:
@@ -102,8 +98,6 @@ public class HandHelperService {
                         return HandAdvice.DOUBLE_OR_STAND.name();
                     } else if (playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 7:
@@ -112,8 +106,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 8:
@@ -122,8 +114,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 9:
@@ -132,8 +122,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 10:
@@ -142,8 +130,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 11:
@@ -152,8 +138,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
 
@@ -294,8 +278,7 @@ public class HandHelperService {
                     } else if (playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
                     } else if (playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 || playerCardSum == 16
-                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     }
                     break;
@@ -304,8 +287,7 @@ public class HandHelperService {
                             playerCardSum == 12) {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 || playerCardSum == 16
-                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 9 || playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -315,8 +297,7 @@ public class HandHelperService {
                     if (playerCardSum == 4 || playerCardSum == 5 || playerCardSum == 6 || playerCardSum == 7 || playerCardSum == 8) {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 || playerCardSum == 16
-                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 9 || playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -326,8 +307,7 @@ public class HandHelperService {
                     if (playerCardSum == 4 || playerCardSum == 5 || playerCardSum == 6 || playerCardSum == 7 || playerCardSum == 8) {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 || playerCardSum == 16
-                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 9 || playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -337,8 +317,7 @@ public class HandHelperService {
                     if (playerCardSum == 4 || playerCardSum == 5 || playerCardSum == 6 || playerCardSum == 7 || playerCardSum == 8) {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 || playerCardSum == 16
-                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 9 || playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -349,8 +328,7 @@ public class HandHelperService {
                             || playerCardSum == 9 || playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 ||
                             playerCardSum == 15 || playerCardSum == 16) {
                         return HandAdvice.HIT.name();
-                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -361,8 +339,7 @@ public class HandHelperService {
                             || playerCardSum == 9 || playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 ||
                             playerCardSum == 15 || playerCardSum == 16) {
                         return HandAdvice.HIT.name();
-                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -373,8 +350,7 @@ public class HandHelperService {
                             || playerCardSum == 9 || playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 ||
                             playerCardSum == 15) {
                         return HandAdvice.HIT.name();
-                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -387,8 +363,7 @@ public class HandHelperService {
                             || playerCardSum == 9 || playerCardSum == 12 || playerCardSum == 13 ||
                             playerCardSum == 14 || playerCardSum == 10) {
                         return HandAdvice.HIT.name();
-                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -401,8 +376,7 @@ public class HandHelperService {
                             || playerCardSum == 9 || playerCardSum == 12 || playerCardSum == 13 ||
                             playerCardSum == 14 || playerCardSum == 10 ) {
                         return HandAdvice.HIT.name();
-                    } else if (playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                    } else if (playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -432,6 +406,10 @@ public class HandHelperService {
 			throw new BlackjackHelperServiceException(e.getMessage());
 		}
 
+		if (playerCardSum == 21) {
+		    return HandAdvice.BLACKJACK.name();
+        }
+
         //------------------HANDLES SOFT ACES---------------------------------
         if (playerCard1.equals("A") || playerCard2.equals("A") && playerCard1 != playerCard2) {
             switch (dealerCardInt) {
@@ -441,8 +419,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 3:
@@ -453,8 +429,6 @@ public class HandHelperService {
                         return HandAdvice.DOUBLE_OR_STAND.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     } else if (playerCardSum == 17) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
                     }
@@ -466,8 +440,6 @@ public class HandHelperService {
                         return HandAdvice.DOUBLE_OR_STAND.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     } else if (playerCardSum == 15 || playerCardSum == 16 || playerCardSum == 17) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
                     }
@@ -480,8 +452,6 @@ public class HandHelperService {
                         return HandAdvice.DOUBLE_OR_STAND.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 6:
@@ -492,8 +462,6 @@ public class HandHelperService {
                         return HandAdvice.DOUBLE_OR_STAND.name();
                     } else if (playerCardSum == 20 || playerCardSum == 19) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 7:
@@ -502,8 +470,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 8:
@@ -512,8 +478,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 9:
@@ -522,8 +486,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 10:
@@ -532,8 +494,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
                 case 11:
@@ -542,8 +502,6 @@ public class HandHelperService {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
-                    } else if (playerCardSum == 21) {
-                        return HandAdvice.BLACKJACK.name();
                     }
                     break;
 
@@ -682,8 +640,7 @@ public class HandHelperService {
                     } else if (playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
                     } else if (playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 || playerCardSum == 16
-                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     }
                     break;
@@ -692,8 +649,7 @@ public class HandHelperService {
                             playerCardSum == 12) {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 || playerCardSum == 16
-                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 9 || playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -703,8 +659,7 @@ public class HandHelperService {
                     if (playerCardSum == 4 || playerCardSum == 5 || playerCardSum == 6 || playerCardSum == 7 || playerCardSum == 8) {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 || playerCardSum == 16
-                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 9 || playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -714,8 +669,7 @@ public class HandHelperService {
                     if (playerCardSum == 4 || playerCardSum == 5 || playerCardSum == 6 || playerCardSum == 7 || playerCardSum == 8) {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 || playerCardSum == 16
-                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 9 || playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -725,8 +679,7 @@ public class HandHelperService {
                     if (playerCardSum == 4 || playerCardSum == 5 || playerCardSum == 6 || playerCardSum == 7 || playerCardSum == 8) {
                         return HandAdvice.HIT.name();
                     } else if (playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 || playerCardSum == 16
-                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                            || playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 9 || playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -737,8 +690,7 @@ public class HandHelperService {
                             || playerCardSum == 9 || playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 ||
                             playerCardSum == 15 || playerCardSum == 16) {
                         return HandAdvice.HIT.name();
-                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -749,8 +701,7 @@ public class HandHelperService {
                             || playerCardSum == 9 || playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 ||
                             playerCardSum == 15 || playerCardSum == 16) {
                         return HandAdvice.HIT.name();
-                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -761,8 +712,7 @@ public class HandHelperService {
                             || playerCardSum == 9 || playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14 ||
                             playerCardSum == 15) {
                         return HandAdvice.HIT.name();
-                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 10 || playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -775,8 +725,7 @@ public class HandHelperService {
                             || playerCardSum == 9 || playerCardSum == 12 || playerCardSum == 13 ||
                             playerCardSum == 14 || playerCardSum == 10) {
                         return HandAdvice.HIT.name();
-                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21) {
+                    } else if (playerCardSum == 17 || playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 11) {
                         return HandAdvice.DOUBLE_OR_HIT.name();
@@ -789,8 +738,7 @@ public class HandHelperService {
                             || playerCardSum == 9 || playerCardSum == 12 || playerCardSum == 13 || playerCardSum == 14
                             || playerCardSum == 15 || playerCardSum == 11 || playerCardSum == 10) {
                         return HandAdvice.HIT.name();
-                    } else if (playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20
-                            || playerCardSum == 21 || playerCardSum == 17) {
+                    } else if (playerCardSum == 18 || playerCardSum == 19 || playerCardSum == 20 || playerCardSum == 17) {
                         return HandAdvice.STAY.name();
                     } else if (playerCardSum == 16) {
                         return HandAdvice.SURRENDER_IF_ALLOWED_OR_HIT.name();

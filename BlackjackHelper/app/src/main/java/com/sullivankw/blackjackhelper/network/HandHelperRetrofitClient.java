@@ -8,6 +8,6 @@ public interface HandHelperRetrofitClient {
 
         @GET("advice")
         Call<String> getAdvice(@Query("hitSoft") boolean hitSoft, @Query("dealerCard") String dealerCard,
-                                          @Query("playerCard1") String playerCard1,
+                               @Query("playerCard1") String playerCard1,
                                @Query("playerCard2") String playerCard2);
 }
