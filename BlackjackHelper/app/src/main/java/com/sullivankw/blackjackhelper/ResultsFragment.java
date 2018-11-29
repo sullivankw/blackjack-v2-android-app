@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sullivankw.blackjackhelper.base.BaseFragment;
+import com.sullivankw.blackjackhelper.jar.HandAdvice;
 
 public class ResultsFragment extends BaseFragment implements View.OnClickListener {
 
@@ -56,7 +57,11 @@ public class ResultsFragment extends BaseFragment implements View.OnClickListene
                 if (s != null) {
                     advice = s;
                     adviceText.setTypeface(null, Typeface.BOLD);
-                    adviceText.setText(getResources().getString(R.string.advice_message, advice));
+                    if (advice.equals(HandAdvice.BLACKJACK.name())) {
+                        adviceText.setText(getResources().getString(R.string.advice_message_bj, advice));
+                    } else {
+                        adviceText.setText(getResources().getString(R.string.advice_message, advice));
+                    }
                 }
             }
         });
