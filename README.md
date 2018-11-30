@@ -15,11 +15,8 @@
 
 <img src="https://github.com/sullivankw/blackjack-v2-android-app/blob/master/choose_dealer_card.png" width="256">
 
-
 * Get statistically backed advice on the decision
-
-![Advice View](advice.png)
+<img src="https://github.com/sullivankw/blackjack-v2-android-app/blob/master/advice.png" width="256">
 
 * Try practice mode and hone your skills
-
-![Practice Mode View](practice_mode.png)
+<img src="https://github.com/sullivankw/blackjack-v2-android-app/blob/master/practice_mode.png" width="256">
