@@ -1,7 +1,0 @@
-2. lock ui for network call? --v3 cause this version wont have any http calls
-3. add module(JAR) to handle non network nec....since only client is android atm
-7. add lifecycle awareness?
-launcher icon
-sign apk, launch
-
-
