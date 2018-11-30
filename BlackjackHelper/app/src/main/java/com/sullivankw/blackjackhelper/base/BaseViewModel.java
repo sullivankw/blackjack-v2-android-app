@@ -18,16 +18,16 @@ public class BaseViewModel extends ViewModel {
 
     private AndroidHandHelperService androidHandHelperService;
     private boolean hitSoft17;
+    //REST API is available but not implemented until other client apps need to hit the service
+    private boolean overHttp = false;
 
 
     public BaseViewModel() {
             androidHandHelperService = AndroidHandHelperService.getAndroidHandHelperService();
     }
-
-    //todo set better than hardcoded http method boolean
     public String getHandHelp() throws BlackjackHelperServiceException {
         return androidHandHelperService.getHandHelp(getHitSoft17(), dealerCard.getValue(),
-                playerCardOne.getValue(), playerCardTwo.getValue(), this, false);
+                playerCardOne.getValue(), playerCardTwo.getValue(), this, overHttp);
     }
 
     public void setHitSoft17(boolean hitSoft17) {

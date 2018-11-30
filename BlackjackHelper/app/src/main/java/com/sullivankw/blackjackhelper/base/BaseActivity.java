@@ -15,7 +15,6 @@ public class BaseActivity extends AppCompatActivity {
     public BottomNavigationView setupBottomNav(int bottomNavId) {
         BottomNavigationView bottomNav = findViewById(bottomNavId);
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            //todo keep up with current activity in a view model to prevent unecessary switches or will framework handle?
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
