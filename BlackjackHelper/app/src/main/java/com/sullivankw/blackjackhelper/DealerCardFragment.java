@@ -6,25 +6,26 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.sullivankw.blackjackhelper.base.BaseFragment;
 
 public class DealerCardFragment extends BaseFragment implements View.OnClickListener {
 
-    private Button buttonTwo;
-    private Button buttonThree;
-    private Button buttonFour;
-    private Button buttonFive;
-    private Button buttonSix;
-    private Button buttonSeven;
-    private Button buttonEight;
-    private Button buttonNine;
-    private Button buttonTen;
-    private Button buttonJack;
-    private Button buttonQueen;
-    private Button buttonKing;
-    private Button buttonAce;
+    private ImageView buttonTwo;
+    private ImageView buttonThree;
+    private ImageView buttonFour;
+    private ImageView buttonFive;
+    private ImageView buttonSix;
+    private ImageView buttonSeven;
+    private ImageView buttonEight;
+    private ImageView buttonNine;
+    private ImageView buttonTen;
+    private ImageView buttonJack;
+    private ImageView buttonQueen;
+    private ImageView buttonKing;
+    private ImageView buttonAce;
 
     private CardSelectedViewModel viewModel;
     private int[] buttonIdArray;
@@ -44,19 +45,19 @@ public class DealerCardFragment extends BaseFragment implements View.OnClickList
 
     private void createBtnIdArray() {
         buttonIdArray = new int[13];
-        buttonIdArray[0] = R.id.buttonTwo;
-        buttonIdArray[1] = R.id.buttonThree;
-        buttonIdArray[2] = R.id.buttonFour;
-        buttonIdArray[3] = R.id.buttonFive;
-        buttonIdArray[4] = R.id.buttonSix;
-        buttonIdArray[5] = R.id.buttonSeven;
-        buttonIdArray[6] = R.id.buttonEight;
-        buttonIdArray[7] = R.id.buttonNine;
-        buttonIdArray[8] = R.id.buttonTen;
-        buttonIdArray[9] = R.id.buttonJack;
-        buttonIdArray[10] = R.id.buttonQueen;
-        buttonIdArray[11] = R.id.buttonKing;
-        buttonIdArray[12] = R.id.buttonAce;
+        buttonIdArray[0] = R.id.cardImageViewDC2;
+        buttonIdArray[1] = R.id.cardImageViewDC3;
+        buttonIdArray[2] = R.id.cardImageViewDC4;
+        buttonIdArray[3] = R.id.cardImageViewDC5;
+        buttonIdArray[4] = R.id.cardImageViewDC6;
+        buttonIdArray[5] = R.id.cardImageViewDC7;
+        buttonIdArray[6] = R.id.cardImageViewDC8;
+        buttonIdArray[7] = R.id.cardImageViewDC9;
+        buttonIdArray[8] = R.id.cardImageViewDCT;
+        buttonIdArray[9] = R.id.cardImageViewDCJ;
+        buttonIdArray[10] = R.id.cardImageViewDCQ;
+        buttonIdArray[11] = R.id.cardImageViewDCK;
+        buttonIdArray[12] = R.id.cardImageViewDCA;
     }
 
     private void setupListeners() {
@@ -77,7 +78,7 @@ public class DealerCardFragment extends BaseFragment implements View.OnClickList
     }
 
     private void setupViews(View view) {
-        Button[] buttons = setupButtonViews(view, buttonIdArray);
+        ImageView[] buttons = setupButtonViews(view, buttonIdArray);
 
         buttonTwo = buttons[0];
         buttonThree = buttons[1];
@@ -97,7 +98,6 @@ public class DealerCardFragment extends BaseFragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-
         String card = convertButtonClickToCardSelected(v.getId(), buttonIdArray);
 
         viewModel.setDealerCard(card);

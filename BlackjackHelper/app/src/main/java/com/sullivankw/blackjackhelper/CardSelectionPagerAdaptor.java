@@ -55,10 +55,10 @@ public class CardSelectionPagerAdaptor extends FragmentPagerAdapter {
                 return "Dealer Card";
             }
             case 1 : {
-                return  "Your First Card";
+                return  "First Card";
             }
             case 2 : {
-                return "Your Next Card";
+                return "Other Card";
             }
             case 3 : {
                 return "Results";

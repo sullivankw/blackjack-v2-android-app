@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.sullivankw.blackjackhelper.CardSelectedViewModel;
 
@@ -56,23 +57,23 @@ public class BaseFragment extends Fragment {
     }
 
 
-    public Button[] setupButtonViews(View view, int [] buttonIdArray) {
+    public ImageView[] setupButtonViews(View view, int [] buttonIdArray) {
 
-        Button buttonTwo = view.findViewById(buttonIdArray[0]);
-        Button buttonThree = view.findViewById(buttonIdArray[1]);
-        Button buttonFour = view.findViewById(buttonIdArray[2]);
-        Button buttonFive = view.findViewById(buttonIdArray[3]);
-        Button buttonSix = view.findViewById(buttonIdArray[4]);
-        Button buttonSeven = view.findViewById(buttonIdArray[5]);
-        Button buttonEight = view.findViewById(buttonIdArray[6]);
-        Button buttonNine = view.findViewById(buttonIdArray[7]);
-        Button buttonTen = view.findViewById(buttonIdArray[8]);
-        Button buttonJack = view.findViewById(buttonIdArray[9]);
-        Button buttonQueen = view.findViewById(buttonIdArray[10]);
-        Button buttonKing = view.findViewById(buttonIdArray[11]);
-        Button buttonAce = view.findViewById(buttonIdArray[12]);
+        ImageView buttonTwo = view.findViewById(buttonIdArray[0]);
+        ImageView buttonThree = view.findViewById(buttonIdArray[1]);
+        ImageView buttonFour = view.findViewById(buttonIdArray[2]);
+        ImageView buttonFive = view.findViewById(buttonIdArray[3]);
+        ImageView buttonSix = view.findViewById(buttonIdArray[4]);
+        ImageView buttonSeven = view.findViewById(buttonIdArray[5]);
+        ImageView buttonEight = view.findViewById(buttonIdArray[6]);
+        ImageView buttonNine = view.findViewById(buttonIdArray[7]);
+        ImageView buttonTen = view.findViewById(buttonIdArray[8]);
+        ImageView buttonJack = view.findViewById(buttonIdArray[9]);
+        ImageView buttonQueen = view.findViewById(buttonIdArray[10]);
+        ImageView buttonKing = view.findViewById(buttonIdArray[11]);
+        ImageView buttonAce = view.findViewById(buttonIdArray[12]);
 
-        return new Button[]{buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix, buttonSeven, buttonEight,
+        return new ImageView[]{buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix, buttonSeven, buttonEight,
                 buttonNine, buttonTen, buttonJack, buttonQueen, buttonKing, buttonAce
         };
 

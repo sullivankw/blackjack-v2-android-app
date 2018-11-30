@@ -6,25 +6,25 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import com.sullivankw.blackjackhelper.base.BaseFragment;
 
 public class PlayerCardTwoFragment extends BaseFragment implements View.OnClickListener {
 
-    private Button buttonTwo;
-    private Button buttonThree;
-    private Button buttonFour;
-    private Button buttonFive;
-    private Button buttonSix;
-    private Button buttonSeven;
-    private Button buttonEight;
-    private Button buttonNine;
-    private Button buttonTen;
-    private Button buttonJack;
-    private Button buttonQueen;
-    private Button buttonKing;
-    private Button buttonAce;
+    private ImageView buttonTwo;
+    private ImageView buttonThree;
+    private ImageView buttonFour;
+    private ImageView buttonFive;
+    private ImageView buttonSix;
+    private ImageView buttonSeven;
+    private ImageView buttonEight;
+    private ImageView buttonNine;
+    private ImageView buttonTen;
+    private ImageView buttonJack;
+    private ImageView buttonQueen;
+    private ImageView buttonKing;
+    private ImageView buttonAce;
 
     private int[] buttonIdArray;
     private CardSelectedViewModel viewModel;
@@ -45,19 +45,19 @@ public class PlayerCardTwoFragment extends BaseFragment implements View.OnClickL
 
     private void createBtnIdArray() {
         buttonIdArray = new int[13];
-        buttonIdArray[0] = R.id.playerCardTwoBtnTwo;
-        buttonIdArray[1] = R.id.playerCardTwoBtnThree;
-        buttonIdArray[2] = R.id.playerCardTwoBtnFour;
-        buttonIdArray[3] = R.id.playerCardTwoBtnFive;
-        buttonIdArray[4] = R.id.playerCardTwoBtnSix;
-        buttonIdArray[5] = R.id.playerCardTwoBtnSeven;
-        buttonIdArray[6] = R.id.playerCardTwoBtnEight;
-        buttonIdArray[7] = R.id.playerCardTwoBtnNine;
-        buttonIdArray[8] = R.id.playerCardTwoBtnTen;
-        buttonIdArray[9] = R.id.playerCardTwoBtnJack;
-        buttonIdArray[10] = R.id.playerCardTwoBtnQueen;
-        buttonIdArray[11] = R.id.playerCardTwoBtnKing;
-        buttonIdArray[12] = R.id.playerCardTwoBtnAce;
+        buttonIdArray[0] = R.id.cardImageViewP2C2;
+        buttonIdArray[1] = R.id.cardImageViewP2C3;
+        buttonIdArray[2] = R.id.cardImageViewP2C4;
+        buttonIdArray[3] = R.id.cardImageViewP2C5;
+        buttonIdArray[4] = R.id.cardImageViewP2C6;
+        buttonIdArray[5] = R.id.cardImageViewP2C7;
+        buttonIdArray[6] = R.id.cardImageViewP2C8;
+        buttonIdArray[7] = R.id.cardImageViewP2C9;
+        buttonIdArray[8] = R.id.cardImageViewP2CT;
+        buttonIdArray[9] = R.id.cardImageViewP2CJ;
+        buttonIdArray[10] = R.id.cardImageViewP2CQ;
+        buttonIdArray[11] = R.id.cardImageViewP2CK;
+        buttonIdArray[12] = R.id.cardImageViewP2CA;
     }
 
     private void setupListeners() {
@@ -78,7 +78,7 @@ public class PlayerCardTwoFragment extends BaseFragment implements View.OnClickL
     }
 
     private void setupViews(View view) {
-        Button[] buttons = setupButtonViews(view, buttonIdArray);
+        ImageView[] buttons = setupButtonViews(view, buttonIdArray);
 
         buttonTwo = buttons[0];
         buttonThree = buttons[1];

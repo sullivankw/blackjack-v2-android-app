@@ -1,209 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/cardImageViewP2C2"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_2_of_clubs"
+        app:layout_constraintEnd_toStartOf="@+id/cardImageViewP2C3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cardImageViewP2C3"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_3_of_clubs"
+        app:layout_constraintEnd_toStartOf="@+id/cardImageViewP2C4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@+id/cardImageViewP2C2"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
-            android:id="@+id/playerCardTwoText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="1dp"
-            android:layout_marginStart="109dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="234dp"
-            android:text="@string/select_player_card_two_message"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/cardImageViewP2C4"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_4_of_clubs"
+        app:layout_constraintEnd_toStartOf="@+id/cardImageViewP2C5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@+id/cardImageViewP2C3"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnTwo"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/_2"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnThree"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/cardImageViewP2C5"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_5_of_clubs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@+id/cardImageViewP2C4"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnThree"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/_3"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnFour"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnTwo"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/cardImageViewP2C6"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_6_of_clubs"
+        app:layout_constraintEnd_toStartOf="@+id/cardImageViewP2C7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewP2C2" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnFour"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/_4"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnFive"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnThree"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/cardImageViewP2C7"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_7_of_clubs"
+        app:layout_constraintEnd_toStartOf="@+id/cardImageViewP2C8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardImageViewP2C6"
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewP2C3" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnFive"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/_5"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnFour"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/cardImageViewP2C8"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_8_of_clubs"
+        app:layout_constraintEnd_toStartOf="@+id/cardImageViewP2C9"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardImageViewP2C7"
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewP2C4" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnSix"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/_6"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnSeven"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnTwo" />
+    <ImageView
+        android:id="@+id/cardImageViewP2C9"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_9_of_clubs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardImageViewP2C8"
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewP2C5" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnSeven"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/_7"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnEight"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnSix"
-            app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnThree" />
+    <ImageView
+        android:id="@+id/cardImageViewP2CT"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_10_of_clubs"
+        app:layout_constraintEnd_toStartOf="@+id/cardImageViewP2CJ"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewP2C6" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnEight"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/_8"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnNine"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnSeven"
-            app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnFour" />
+    <ImageView
+        android:id="@+id/cardImageViewP2CJ"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_jack_of_clubs"
+        app:layout_constraintEnd_toStartOf="@+id/cardImageViewP2CQ"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardImageViewP2CT"
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewP2C7" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnNine"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/_9"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnEight"
-            app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnFive" />
+    <ImageView
+        android:id="@+id/cardImageViewP2CQ"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_queen_of_clubs"
+        app:layout_constraintEnd_toStartOf="@+id/cardImageViewP2CK"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardImageViewP2CJ"
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewP2C8" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnTen"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/_10"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnJack"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnSix" />
+    <ImageView
+        android:id="@+id/cardImageViewP2CK"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_king_of_clubs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cardImageViewP2CQ"
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewP2C9" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnJack"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/j"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnQueen"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnTen"
-            app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnSeven" />
+    <ImageView
+        android:id="@+id/cardImageViewP2CA"
+        android:layout_width="64dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/randomly_selected_dealer_card"
+        android:src="@drawable/ic_ace_of_clubs"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewP2CQ" />
 
-        <Button
-            android:id="@+id/playerCardTwoBtnQueen"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/q"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/playerCardTwoBtnKing"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnJack"
-            app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnEight" />
-
-        <Button
-            android:id="@+id/playerCardTwoBtnKing"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/k"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerCardTwoBtnQueen"
-            app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnNine" />
-
-        <Button
-            android:id="@+id/playerCardTwoBtnAce"
-            android:layout_width="80sp"
-            android:layout_height="40sp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_btn"
-            android:text="@string/a"
-            android:textSize="18sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/playerCardTwoBtnJack" />
-
-    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

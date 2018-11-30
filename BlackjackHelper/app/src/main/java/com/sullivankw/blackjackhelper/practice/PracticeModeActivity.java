@@ -75,7 +75,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
                     } else {
                         msg = "Nope. If dealer has " + viewModel.getDealerCard().getValue() + " you have " +
                                 viewModel.getPlayerCardOne().getValue() + " and "
-                                + viewModel.getPlayerCardTwo().getValue() + " you should: " + s;
+                                + viewModel.getPlayerCardTwo().getValue() + " you should " + s;
                     }
                     viewModel.resetValues();
                     Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
@@ -86,7 +86,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void setupViews() {
-        imgViewDealer = findViewById(R.id.dealerCardImageView);
+        imgViewDealer = findViewById(R.id.cardImageViewDC2);
         imgViewPCard1 = findViewById(R.id.playerCard1ImageView);
         imgViewPCard2 = findViewById(R.id.playerCard2ImageView);
         guessBtn = findViewById(R.id.guessBtn);

@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/switchVersionPM" />
 
     <ImageView
-        android:id="@+id/dealerCardImageView"
+        android:id="@+id/cardImageViewDC2"
         android:contentDescription="@string/randomly_selected_dealer_card"
         android:layout_width="64dp"
         android:layout_height="112dp"
@@ -51,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dealerCardImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewDC2" />
 
     <ImageView
         android:id="@+id/playerCard1ImageView"
@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toStartOf="@+id/playerCard2ImageView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dealerCardImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewDC2" />
 
     <ImageView
         android:id="@+id/playerCard2ImageView"
@@ -77,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/playerCard1ImageView"
-        app:layout_constraintTop_toBottomOf="@+id/dealerCardImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/cardImageViewDC2" />
 
     <TextView
         android:id="@+id/textViewYouShould"
