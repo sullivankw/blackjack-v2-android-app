@@ -21,3 +21,7 @@
 <img src="https://github.com/sullivankw/blackjack-v2-android-app/blob/master/practice_mode.png" width="256">
 
 ### Dev Stuff ###  
+* This app was created using a tab layout with a viewpager to handle the flow of entering all the data needed to process the best statistically decision.
+* Bottom navigation is implemented to allow the user to easily switch between pratice mode and get help mode
+* I tried to create as much seperation of layers as possible without relying on outside libraries. Singleton patterns are followed for class creations and view models for passing data to and from the UI layers
+* Retrofit is included in this app. However, it is not currently being used. We are using the "non http version". The service layer was inlcluded in the project. I have a rest api available here: https://github.com/sullivankw/spring-boot-blackjack-api. It works correctly when the api is deployed and the switch is turned on in the app itself to start making the http calls instead of the embedded service layer. I used this approach with the hope of creating (with help!?) an ios version that can plug into the same services rather than created that same logic in multiple languages.
