@@ -1,16 +1,25 @@
-### blackjack helper android app ###
+# blackjack helper android app #
 
-* This uses Firebase as a real time database and storage. A user can view a list of profiles and add to that list   
+* Available at 
+* 1 thang  
 * second thang
 
-# Features
+### Features ###
 
 * 1 thang
 * 2 thang
 
 
-# Screens
+### Screens ###
+* Choose the dealer's card
+
 
 ![Dealer Card View](choose_dealer_card.png)
+
+* Get statistically backed advice on the decision
+
 ![Advice View](advice.png)
+
+* Try practice mode and hone your skills
+
 ![Practice Mode View](practice_mode.png)
