@@ -1,13 +1,13 @@
 # blackjack helper android app #
 
-* Available at 
-* 1 thang  
-* second thang
+* Available at https://play.google.com/store/apps/details?id=com.sullivankw.blackjackhelper
+* tbd
+* tbd
 
 ### Features ###
 
-* 1 thang
-* 2 thang
+* tbd
+* tbd
 
 
 ### Screens ###
