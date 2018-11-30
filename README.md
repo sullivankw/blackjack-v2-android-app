@@ -15,6 +15,8 @@
 
 
 ![Dealer Card View](choose_dealer_card.png)
+<img src="https://github.com/sullivankw/blackjack-v2-android-app/blob/master/choose_dealer_card.png" width="128">
+
 
 * Get statistically backed advice on the decision
 
