@@ -13,9 +13,7 @@
 ### Screens ###
 * Choose the dealer's card
 
-
-![Dealer Card View](choose_dealer_card.png)
-<img src="https://github.com/sullivankw/blackjack-v2-android-app/blob/master/choose_dealer_card.png" width="128">
+<img src="https://github.com/sullivankw/blackjack-v2-android-app/blob/master/choose_dealer_card.png" width="256">
 
 
 * Get statistically backed advice on the decision
