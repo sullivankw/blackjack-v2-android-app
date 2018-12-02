@@ -69,16 +69,19 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
             public void onChanged(@Nullable String s) {
                 if (s != null) {
                     String msg;
+                    int msgLength;
                     //already been converted before being returned from service layer
                     if (s.equals(viewModel.getSelection())) {
                         msg = "Correct!";
+                        msgLength = Toast.LENGTH_SHORT;
                     } else {
                         msg = "Nope. If dealer has " + viewModel.getDealerCard().getValue() + " you have " +
                                 viewModel.getPlayerCardOne().getValue() + " and "
                                 + viewModel.getPlayerCardTwo().getValue() + " you should " + s;
+                        msgLength = Toast.LENGTH_LONG;
                     }
                     viewModel.resetValues();
-                    Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), msg, msgLength).show();
                     setupImageResources();
                 }
             }
