@@ -34,4 +34,6 @@
     <string name="randomly_selected_dealer_card">randomly selected dealer card</string>
     <string name="randomly_selected_first_player_card">randomly selected first player card</string>
     <string name="randomly_selected_second_player_card">randomly selected second player card</string>
+    <string name="make_the_correct_decision_at_the_table">Make the correct decision at the table</string>
+    <string name="splash_image_icon">splash image icon</string>
 </resources>
