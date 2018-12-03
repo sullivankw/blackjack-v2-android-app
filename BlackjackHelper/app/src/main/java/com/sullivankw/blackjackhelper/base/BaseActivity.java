@@ -12,7 +12,7 @@ import com.sullivankw.blackjackhelper.practice.PracticeModeActivity;
 
 public class BaseActivity extends AppCompatActivity {
 
-    public BottomNavigationView setupBottomNav(int bottomNavId) {
+    public void setupBottomNav(int bottomNavId) {
         BottomNavigationView bottomNav = findViewById(bottomNavId);
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -32,7 +32,5 @@ public class BaseActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        return bottomNav;
     }
 }

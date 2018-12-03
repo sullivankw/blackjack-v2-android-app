@@ -113,7 +113,7 @@ public class BaseViewModel extends ViewModel {
         this.playerCardTwo.setValue(playerCardTwo);
     }
 
-    public void resetValues() {
+    public void resetCardValues() {
         playerCardTwo.setValue(null);
         playerCardOne.setValue(null);
         dealerCard.setValue(null);

@@ -34,4 +34,6 @@
     <string name="randomly_selected_dealer_card">randomly selected dealer card</string>
     <string name="randomly_selected_first_player_card">randomly selected first player card</string>
     <string name="randomly_selected_second_player_card">randomly selected second player card</string>
+    <string name="current_streak">Current Streak</string>
+    <string name="high_score">High Score</string>
 </resources>

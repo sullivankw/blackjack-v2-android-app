@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity {
         setUpViewPager();
         setUpTabLayout();
         setupViewModel();
-        bottomNav = setupBottomNav(R.id.bottom_nav_layout);
+        setupBottomNav(R.id.bottom_nav_layout);
     }
 
     private void setupViewModel() {

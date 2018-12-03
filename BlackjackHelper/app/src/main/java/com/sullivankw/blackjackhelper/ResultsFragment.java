@@ -89,7 +89,7 @@ public class ResultsFragment extends BaseFragment implements View.OnClickListene
     public void onClick(View v) {
         if (v.equals(v.findViewById(R.id.returnBtn))) {
             viewModel.setNextPage(0);
-            viewModel.resetValues();
+            viewModel.resetCardValues();
         }
     }
 
