@@ -36,4 +36,6 @@
     <string name="randomly_selected_second_player_card">randomly selected second player card</string>
     <string name="current_streak">Current Streak</string>
     <string name="high_score">High Score</string>
+    <string name="make_the_correct_decision_at_the_table">Make the correct decision at the table</string>
+    <string name="splash_image_icon">splash image icon</string>
 </resources>
