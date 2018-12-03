@@ -14,6 +14,9 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class AndroidHandHelperService {
     private static AndroidHandHelperService service;
 
+    /**
+     * For testing on local services. Will change if and when switched to hit the Rest endpoint
+     **/
     private static final String URL = "http://10.0.2.2:8080/";
 
     private AndroidHandHelperService() {
