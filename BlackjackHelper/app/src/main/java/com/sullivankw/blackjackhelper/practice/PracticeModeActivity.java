@@ -41,6 +41,9 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     private TextView textViewCSValue;
     private int highScore;
     private SharedPreferences sharedPref;
+    private int dealerRandom;
+    private int player1Random;
+    private int player2Random;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -115,10 +118,14 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void setupImageResources() {
-        int dealerRandom = new Random().nextInt(13);
-        int player1Random = new Random().nextInt(13);
-        int player2Random = new Random().nextInt(13);
-
+        setRandomCards();
+        if (player1Random + player2Random == 23 || player1Random + player2Random == 22
+                || player1Random + player2Random == 21 || player1Random + player2Random == 20 ) {
+            /**
+             * player has blackjack, no need to guess, reset and try again
+             */
+            setupImageResources();
+        }
         CardImage dealerCardImage = CardImage.getCardImageByPosition(dealerRandom);
         CardImage playerCardImage1 = CardImage.getCardImageByPosition(player1Random);
         CardImage playerCardImage2 = CardImage.getCardImageByPosition(player2Random);
@@ -130,6 +137,12 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
         viewModel.setDealerCard(dealerCardImage.name());
         viewModel.setPlayerCardOne(playerCardImage1.name());
         viewModel.setPlayerCardTwo(playerCardImage2.name());
+    }
+
+    private void setRandomCards() {
+        dealerRandom = new Random().nextInt(13);
+        player1Random = new Random().nextInt(13);
+        player2Random = new Random().nextInt(13);
     }
 
     public void populateSpinner() {
