@@ -37,6 +37,9 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
 
     private static final String HAS_BEEN_RATED_KEY = "has_been_rated";
     private static final String PLAY_STORE_URL = "http://play.google.com/store/apps/details?id=";
+    private static final String HIGH_SCORE_KEY = "high_score";
+    private static final String ASKED_AMT_KEY = "asked_rating_amt";
+    
     private Spinner spinner;
     private String selection;
     private ImageView imgViewDealer;
@@ -51,8 +54,6 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     private int dealerRandom;
     private int player1Random;
     private int player2Random;
-
-    private static final String ASKED_AMT_KEY = "asked_rating_amt";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -193,12 +194,12 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
 
     private void checkSharedPreferencesStorage() {
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        highScore = sharedPref.getInt("high_score", 0);
+        highScore = sharedPref.getInt(HIGH_SCORE_KEY, 0);
         textViewHSValue.setText(String.valueOf(highScore));
         textViewCSValue.setText(String.valueOf(viewModel.getCurrentStreak()));
         /**
          * add to counter. if more than 5 times the app has been used,
-         * or 5 times after last dismissal we will prompt again
+         * or 2 times after last dismissal we will prompt again
          * **/
 
         if (hasBeenRated()) {
@@ -208,9 +209,6 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
         int timesAsked = sharedPref.getInt(ASKED_AMT_KEY, 0) + 1;
         sharedPref.edit().putInt(ASKED_AMT_KEY, timesAsked).apply();
         if (timesAsked > 2) {
-            //ask!!
-            //if yes we direct to new page
-            //if no, reset to zero and start the counter again
             RatingDialog dialogFragment = new RatingDialog();
             dialogFragment.show(getSupportFragmentManager(), "dialog-tag");
         }
@@ -230,11 +228,10 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
             if (getActivity() == null) {
                 return null;
             }
-            return new AlertDialog.Builder(getActivity()).setTitle("Will you rate this app? Ratings help visibility in the play store.")
+            return new AlertDialog.Builder(getActivity()).setTitle("Ratings help with visibility in the play store. Rate us?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //TODO be sure they rate, dont just accept this step as clearance
                             sharedPref.edit().putBoolean(HAS_BEEN_RATED_KEY, true).apply();
                             Uri uri = Uri.parse(PLAY_STORE_URL + getActivity().getBaseContext().getPackageName());
                             Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
@@ -254,7 +251,6 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //reset ask counter to 0
                             sharedPref.edit().putInt(ASKED_AMT_KEY, 0).apply();
                         }
                     }).create();
