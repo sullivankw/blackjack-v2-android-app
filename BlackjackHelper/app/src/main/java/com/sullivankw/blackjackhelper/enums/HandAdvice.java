@@ -42,4 +42,16 @@ public enum HandAdvice {
         }
         return displayValues;
     }
+
+    public static List<String> getPracticeModeSelectionValues() {
+        List<String> displayValues = new ArrayList<>();
+        for (HandAdvice advice : HandAdvice.values()) {
+            if (advice.equals(BLACKJACK)) {
+                continue;
+            }
+            String displayValue = advice.getDisplayValue();
+            displayValues.add(displayValue);
+        }
+        return displayValues;
+    }
 }

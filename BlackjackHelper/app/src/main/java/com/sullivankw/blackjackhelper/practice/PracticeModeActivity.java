@@ -1,12 +1,18 @@
 package com.sullivankw.blackjackhelper.practice;
 
+import android.app.Dialog;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -18,10 +24,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sullivankw.blackjackhelper.R;
 import com.sullivankw.blackjackhelper.base.BaseActivity;
 import com.sullivankw.blackjackhelper.enums.CardImage;
 import com.sullivankw.blackjackhelper.enums.HandAdvice;
-import com.sullivankw.blackjackhelper.R;
 import com.sullivankw.blackjackhelper.jar.BlackjackHelperServiceException;
 
 import java.util.List;
@@ -29,7 +35,8 @@ import java.util.Random;
 
 public class PracticeModeActivity extends BaseActivity implements View.OnClickListener {
 
-    private BottomNavigationView bottomNav;
+    private static final String HAS_BEEN_RATED_KEY = "has_been_rated";
+    private static final String PLAY_STORE_URL = "http://play.google.com/store/apps/details?id=";
     private Spinner spinner;
     private String selection;
     private ImageView imgViewDealer;
@@ -40,10 +47,12 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     private TextView textViewHSValue;
     private TextView textViewCSValue;
     private int highScore;
-    private SharedPreferences sharedPref;
+    private static SharedPreferences sharedPref;
     private int dealerRandom;
     private int player1Random;
     private int player2Random;
+
+    private static final String ASKED_AMT_KEY = "asked_rating_amt";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +65,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
 
         setupBottomNav(R.id.bottom_nav_practice_layout);
         setupSpinner();
-        getFromSharedPreferences();
+        checkSharedPreferencesStorage();
     }
 
     private void setupViewModel() {
@@ -82,25 +91,23 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
                     }
                     viewModel.resetCardValues();
                     Toast toast = Toast.makeText(getApplicationContext(),
-                            msg, Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0);
+                            msg, msgLength);
+                    toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                     toast.show();
                     //could make this an observable
-                    updateStreakValues(currentStreak, msg, msgLength);
+                    updateStreakValues(currentStreak);
                     setupImageResources();
                 }
             }
         });
     }
 
-    private void updateStreakValues(int currentStreak, String msg, int msgLength) {
+    private void updateStreakValues(int currentStreak) {
         viewModel.setCurrentStreak(currentStreak);
         textViewCSValue.setText(String.valueOf(viewModel.getCurrentStreak()));
         if (currentStreak > highScore) {
             //set shred prefs
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt("high_score", currentStreak);
-            editor.apply();
+            sharedPref.edit().putInt("high_score", currentStreak).apply();
             highScore = currentStreak;
             textViewHSValue.setText(String.valueOf(highScore));
         }
@@ -120,7 +127,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     private void setupImageResources() {
         setRandomCards();
         if (player1Random + player2Random == 23 || player1Random + player2Random == 22
-                || player1Random + player2Random == 21 || player1Random + player2Random == 20 ) {
+                || player1Random + player2Random == 21 || player1Random + player2Random == 20) {
             /**
              * player has blackjack, no need to guess, reset and try again
              */
@@ -146,7 +153,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     }
 
     public void populateSpinner() {
-        List<String> items = HandAdvice.getDisplayValues();
+        List<String> items = HandAdvice.getPracticeModeSelectionValues();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -184,10 +191,75 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
         });
     }
 
-    private void getFromSharedPreferences() {
+    private void checkSharedPreferencesStorage() {
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         highScore = sharedPref.getInt("high_score", 0);
         textViewHSValue.setText(String.valueOf(highScore));
         textViewCSValue.setText(String.valueOf(viewModel.getCurrentStreak()));
+        /**
+         * add to counter. if more than 5 times the app has been used,
+         * or 5 times after last dismissal we will prompt again
+         * **/
+
+        if (hasBeenRated()) {
+            //all good, don't bug them again
+            return;
+        }
+        int timesAsked = sharedPref.getInt(ASKED_AMT_KEY, 0) + 1;
+        sharedPref.edit().putInt(ASKED_AMT_KEY, timesAsked).apply();
+        if (timesAsked > 2) {
+            //ask!!
+            //if yes we direct to new page
+            //if no, reset to zero and start the counter again
+            RatingDialog dialogFragment = new RatingDialog();
+            dialogFragment.show(getSupportFragmentManager(), "dialog-tag");
+        }
+
     }
+
+    private boolean hasBeenRated() {
+        return sharedPref.getBoolean(HAS_BEEN_RATED_KEY, false);
+    }
+
+    public static class RatingDialog extends DialogFragment {
+
+
+        @Override
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+
+            if (getActivity() == null) {
+                return null;
+            }
+            return new AlertDialog.Builder(getActivity()).setTitle("Will you rate this app? Ratings help visibility in the play store.")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //TODO be sure they rate, dont just accept this step as clearance
+                            sharedPref.edit().putBoolean(HAS_BEEN_RATED_KEY, true).apply();
+                            Uri uri = Uri.parse(PLAY_STORE_URL + getActivity().getBaseContext().getPackageName());
+                            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                            // To count with Play market backstack, After pressing back button,
+                            // to taken back to our application, we need to add following flags to intent.
+                            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                            try {
+                                startActivity(goToMarket);
+                            } catch (ActivityNotFoundException e) {
+                                Toast.makeText(getContext(), "Unexpected error. Unable to connect to play store.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //reset ask counter to 0
+                            sharedPref.edit().putInt(ASKED_AMT_KEY, 0).apply();
+                        }
+                    }).create();
+        }
+    }
+
+
 }
