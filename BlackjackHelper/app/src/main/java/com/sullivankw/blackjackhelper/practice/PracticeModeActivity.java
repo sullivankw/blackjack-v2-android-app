@@ -1,5 +1,6 @@
 package com.sullivankw.blackjackhelper.practice;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -24,10 +25,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sullivankw.blackjackhelper.AddToLeaderboardActivity;
+import com.sullivankw.blackjackhelper.MainActivity;
 import com.sullivankw.blackjackhelper.R;
 import com.sullivankw.blackjackhelper.base.BaseActivity;
 import com.sullivankw.blackjackhelper.enums.CardImage;
 import com.sullivankw.blackjackhelper.enums.HandAdvice;
+import com.sullivankw.blackjackhelper.firebase.FirebaseUtils;
 import com.sullivankw.blackjackhelper.jar.BlackjackHelperServiceException;
 
 import java.util.List;
@@ -75,6 +79,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onChanged(@Nullable String s) {
                 if (s != null) {
+                    int oldStreak = -1;
                     String msg;
                     int msgLength;
                     int currentStreak = viewModel.getCurrentStreak();
@@ -87,6 +92,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
                         msg = "Nope. If dealer has " + viewModel.getDealerCard().getValue() + " you have " +
                                 viewModel.getPlayerCardOne().getValue() + " and "
                                 + viewModel.getPlayerCardTwo().getValue() + " you should " + s;
+                        oldStreak = currentStreak;
                         currentStreak = 0;
                         msgLength = Toast.LENGTH_LONG;
                     }
@@ -98,6 +104,16 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
                     //could make this an observable
                     updateStreakValues(currentStreak);
                     setupImageResources();
+
+                    //if wifi enabled
+//                    List<User> leaders = FirebaseUtils.getLeaderBoard();
+//                    User lowestEntry = leaders.get(leaders.size() - 1);
+                    if (oldStreak > FirebaseUtils.getLowestLeaderBoardScore()) {
+                        //dialog ask for user name
+                        //if yes, update leaderboard
+                        PracticeModeDialog dialog = new PracticeModeDialog(false, "You score is good enough for our leaderboard. Want to add it?");
+                        dialog.show(getSupportFragmentManager(), "leaderdialog-tag");
+                    }
                 }
             }
         });
@@ -209,7 +225,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
         int timesAsked = sharedPref.getInt(ASKED_AMT_KEY, 0) + 1;
         sharedPref.edit().putInt(ASKED_AMT_KEY, timesAsked).apply();
         if (timesAsked > 2) {
-            RatingDialog dialogFragment = new RatingDialog();
+            PracticeModeDialog dialogFragment = new PracticeModeDialog(true, "Ratings help with visibility in the play store. Rate us?");
             dialogFragment.show(getSupportFragmentManager(), "dialog-tag");
         }
 
@@ -219,8 +235,16 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
         return sharedPref.getBoolean(HAS_BEEN_RATED_KEY, false);
     }
 
-    public static class RatingDialog extends DialogFragment {
+    @SuppressLint("ValidFragment")
+    public static class PracticeModeDialog extends DialogFragment {
 
+        private boolean isRatingDialog;
+        private String title;
+
+        public PracticeModeDialog(boolean isRatingDialog, String title) {
+            this.isRatingDialog = isRatingDialog;
+            this.title = title;
+        }
 
         @Override
         public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -228,30 +252,37 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
             if (getActivity() == null) {
                 return null;
             }
-            return new AlertDialog.Builder(getActivity()).setTitle("Ratings help with visibility in the play store. Rate us?")
+            return new AlertDialog.Builder(getActivity()).setTitle(title)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            sharedPref.edit().putBoolean(HAS_BEEN_RATED_KEY, true).apply();
-                            Uri uri = Uri.parse(PLAY_STORE_URL + getActivity().getBaseContext().getPackageName());
-                            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-                            // To count with Play market backstack, After pressing back button,
-                            // to taken back to our application, we need to add following flags to intent.
-                            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-                                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-                                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                            try {
-                                startActivity(goToMarket);
-                            } catch (ActivityNotFoundException e) {
-                                Toast.makeText(getContext(), "Unexpected error. Unable to connect to play store.",
-                                        Toast.LENGTH_SHORT).show();
+                            if (isRatingDialog) {
+                                sharedPref.edit().putBoolean(HAS_BEEN_RATED_KEY, true).apply();
+                                Uri uri = Uri.parse(PLAY_STORE_URL + getActivity().getBaseContext().getPackageName());
+                                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                                // To count with Play market backstack, After pressing back button,
+                                // to taken back to our application, we need to add following flags to intent.
+                                goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                                        Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                                try {
+                                    startActivity(goToMarket);
+                                } catch (ActivityNotFoundException e) {
+                                    Toast.makeText(getContext(), "Unexpected error. Unable to connect to play store.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                //launch a new activity with summary of score, date, and an input fields for username
+                                startActivity(new Intent(getContext(), AddToLeaderboardActivity.class));
                             }
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            sharedPref.edit().putInt(ASKED_AMT_KEY, 0).apply();
+                            if (isRatingDialog) {
+                                sharedPref.edit().putInt(ASKED_AMT_KEY, 0).apply();
+                            }
                         }
                     }).create();
         }

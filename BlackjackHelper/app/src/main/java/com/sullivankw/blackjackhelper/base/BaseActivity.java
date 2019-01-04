@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.sullivankw.blackjackhelper.LeaderBoardActivity;
 import com.sullivankw.blackjackhelper.MainActivity;
 import com.sullivankw.blackjackhelper.R;
 import com.sullivankw.blackjackhelper.practice.PracticeModeActivity;
@@ -24,6 +25,10 @@ public class BaseActivity extends AppCompatActivity {
                     }
                     case (R.id.navToPractice): {
                         startActivity(new Intent(getBaseContext(), PracticeModeActivity.class));
+                        break;
+                    }
+                    case (R.id.navToLeaderBoard): {
+                        startActivity(new Intent(getBaseContext(), LeaderBoardActivity.class));
                         break;
                     }
                     default:
