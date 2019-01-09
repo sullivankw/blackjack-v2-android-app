@@ -1,4 +1,4 @@
-package com.sullivankw.blackjackhelper;
+package com.sullivankw.blackjackhelper.gethelpflow;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sullivankw.blackjackhelper.viewmodel.CardSelectedViewModel;
+import com.sullivankw.blackjackhelper.R;
 import com.sullivankw.blackjackhelper.base.BaseFragment;
 import com.sullivankw.blackjackhelper.jar.HandAdvice;
 

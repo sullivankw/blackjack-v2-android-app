@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -25,15 +26,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.util.CollectionUtils;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.sullivankw.blackjackhelper.AddToLeaderboardActivity;
-import com.sullivankw.blackjackhelper.MainActivity;
 import com.sullivankw.blackjackhelper.R;
 import com.sullivankw.blackjackhelper.base.BaseActivity;
 import com.sullivankw.blackjackhelper.enums.CardImage;
 import com.sullivankw.blackjackhelper.enums.HandAdvice;
-import com.sullivankw.blackjackhelper.firebase.FirebaseUtils;
 import com.sullivankw.blackjackhelper.jar.BlackjackHelperServiceException;
+import com.sullivankw.blackjackhelper.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -43,6 +49,10 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     private static final String PLAY_STORE_URL = "http://play.google.com/store/apps/details?id=";
     private static final String HIGH_SCORE_KEY = "high_score";
     private static final String ASKED_AMT_KEY = "asked_rating_amt";
+    public static final String DELETE_LEADERBOARD_SCORE = "deleteScore";
+    public static final String ADD_LEADERBOARD_SCORE = "highScore";
+    public static final String LEADERBOARD_SIZE = "leaderSize";
+
     
     private Spinner spinner;
     private String selection;
@@ -58,6 +68,9 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     private int dealerRandom;
     private int player1Random;
     private int player2Random;
+    private static List<User> leaders;
+    private Query leaderBoard;
+    private static int oldStreak = -1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,10 +80,53 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
         setupViewModel();
         setupImageResources();
         setupViewModel();
+        setupLeaderBoard();
 
         setupBottomNav(R.id.bottom_nav_practice_layout);
         setupSpinner();
         checkSharedPreferencesStorage();
+    }
+
+    private void setupLeaderBoard() {
+        leaderBoard = viewModel.getLeaderboard();
+        leaderBoard.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                leaders = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User user = snapshot.getValue(User.class);
+                    leaders.add(user);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //do sumn
+            }
+        });
+    }
+
+    private int getLowestLeaderScore() {
+        //since our query is sorting on highscore, it should be first here
+        if (CollectionUtils.isEmpty(leaders)) {
+            return 0;
+        }
+        int lowScore = leaders.get(0).getHighScore();
+        return lowScore;
+    }
+
+    private static User getLowest() {
+        if (CollectionUtils.isEmpty(leaders)) {
+            return null;
+        }
+        return leaders.get(0);
+    }
+
+    private static int getLeaderBoardSize() {
+        if (CollectionUtils.isEmpty(leaders)) {
+            return 0;
+        }
+        return leaders.size();
     }
 
     private void setupViewModel() {
@@ -79,7 +135,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onChanged(@Nullable String s) {
                 if (s != null) {
-                    int oldStreak = -1;
+
                     String msg;
                     int msgLength;
                     int currentStreak = viewModel.getCurrentStreak();
@@ -106,11 +162,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
                     setupImageResources();
 
                     //if wifi enabled
-//                    List<User> leaders = FirebaseUtils.getLeaderBoard();
-//                    User lowestEntry = leaders.get(leaders.size() - 1);
-                    if (oldStreak > FirebaseUtils.getLowestLeaderBoardScore()) {
-                        //dialog ask for user name
-                        //if yes, update leaderboard
+                    if (oldStreak > getLowestLeaderScore()) {
                         PracticeModeDialog dialog = new PracticeModeDialog(false, "You score is good enough for our leaderboard. Want to add it?");
                         dialog.show(getSupportFragmentManager(), "leaderdialog-tag");
                     }
@@ -124,7 +176,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
         textViewCSValue.setText(String.valueOf(viewModel.getCurrentStreak()));
         if (currentStreak > highScore) {
             //set shred prefs
-            sharedPref.edit().putInt("high_score", currentStreak).apply();
+            sharedPref.edit().putInt(HIGH_SCORE_KEY, currentStreak).apply();
             highScore = currentStreak;
             textViewHSValue.setText(String.valueOf(highScore));
         }
@@ -273,7 +325,14 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
                                 }
                             } else {
                                 //launch a new activity with summary of score, date, and an input fields for username
-                                startActivity(new Intent(getContext(), AddToLeaderboardActivity.class));
+                                //not sharing a view model here. so just pass the data in an intent of the score
+                                Intent intent = new Intent(getContext(), AddToLeaderboardActivity.class);
+                                if (getLowest() != null) {
+                                    intent.putExtra(DELETE_LEADERBOARD_SCORE, getLowest().getId());
+                                }
+                                intent.putExtra(ADD_LEADERBOARD_SCORE, oldStreak);
+                                intent.putExtra(LEADERBOARD_SIZE, getLeaderBoardSize());
+                                startActivity(intent);
                             }
                         }
                     })

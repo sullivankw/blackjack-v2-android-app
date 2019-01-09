@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.sullivankw.blackjackhelper.base.BaseActivity;
 import com.sullivankw.blackjackhelper.jar.BlackjackHelperServiceException;
+import com.sullivankw.blackjackhelper.viewmodel.CardSelectedViewModel;
 
 public class MainActivity extends BaseActivity {
 

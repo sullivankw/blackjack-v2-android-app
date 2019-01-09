@@ -32,7 +32,7 @@ public class LeaderBoardRecViewAdaptor extends RecyclerView.Adapter<LeaderBoardR
     @Override
     public void onBindViewHolder(@NonNull SingleLeaderHolder singleLeaderHolder, int position) {
         final User user = users.get(position);
-        singleLeaderHolder.getLeaderCreated().setText(user.getCreated());
+        singleLeaderHolder.getLeaderCreated().setText(user.getDisplayCreated());
         singleLeaderHolder.getLeaderName().setText(user.getUsername());
         singleLeaderHolder.getLeaderScore().setText(String.valueOf(user.getHighScore()));
 

@@ -5,6 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.sullivankw.blackjackhelper.gethelpflow.DealerCardFragment;
+import com.sullivankw.blackjackhelper.gethelpflow.PlayerCardOneFragment;
+import com.sullivankw.blackjackhelper.gethelpflow.PlayerCardTwoFragment;
+import com.sullivankw.blackjackhelper.gethelpflow.ResultsFragment;
+
 
 public class CardSelectionPagerAdaptor extends FragmentPagerAdapter {
 

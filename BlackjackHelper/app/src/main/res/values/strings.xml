@@ -38,5 +38,8 @@
     <string name="high_score">High Score</string>
     <string name="make_the_correct_decision_at_the_table">Make the correct decision at the table</string>
     <string name="splash_image_icon">splash image icon</string>
-    <string name="leader_board">Leader Board</string>
+    <string name="leader_board">Leaderboard</string>
+    <string name="add_to_leaderboard_summary_line_1">Your score of %1$s in a row made our leaderboard. Congrats.</string>
+    <string name="add_to_leaderboard_summary_line_2">Enter your name to get added.</string>
+    <string name="name">Name</string>
 </resources>

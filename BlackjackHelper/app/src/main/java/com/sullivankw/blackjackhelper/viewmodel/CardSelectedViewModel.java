@@ -1,4 +1,4 @@
-package com.sullivankw.blackjackhelper;
+package com.sullivankw.blackjackhelper.viewmodel;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
