@@ -54,6 +54,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     public static final String DELETE_LEADERBOARD_SCORE = "deleteScore";
     public static final String ADD_LEADERBOARD_SCORE = "highScore";
     public static final String LEADERBOARD_SIZE = "leaderSize";
+    private static final int TIMES_TO_PLAY_BEFORE_RATING_ASK = 4;
 
     
     private Spinner spinner;
@@ -283,7 +284,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
         }
         int timesAsked = sharedPref.getInt(ASKED_AMT_KEY, 0) + 1;
         sharedPref.edit().putInt(ASKED_AMT_KEY, timesAsked).apply();
-        if (timesAsked > 2) {
+        if (timesAsked > TIMES_TO_PLAY_BEFORE_RATING_ASK) {
             PracticeModeDialog dialogFragment = new PracticeModeDialog(true, "Ratings help with visibility in the play store. Rate us?");
             dialogFragment.show(getSupportFragmentManager(), "dialog-tag");
         }
