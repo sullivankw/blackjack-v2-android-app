@@ -4,10 +4,9 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.ActivityNotFoundException;
 import android.support.v4.app.Fragment;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
-import com.sullivankw.blackjackhelper.CardSelectedViewModel;
+import com.sullivankw.blackjackhelper.viewmodel.CardSelectedViewModel;
 
 
 public class BaseFragment extends Fragment {

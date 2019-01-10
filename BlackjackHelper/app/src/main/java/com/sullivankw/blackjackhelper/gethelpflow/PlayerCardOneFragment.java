@@ -1,4 +1,4 @@
-package com.sullivankw.blackjackhelper;
+package com.sullivankw.blackjackhelper.gethelpflow;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.sullivankw.blackjackhelper.viewmodel.CardSelectedViewModel;
+import com.sullivankw.blackjackhelper.R;
 import com.sullivankw.blackjackhelper.base.BaseFragment;
 
 public class PlayerCardOneFragment extends BaseFragment implements View.OnClickListener {

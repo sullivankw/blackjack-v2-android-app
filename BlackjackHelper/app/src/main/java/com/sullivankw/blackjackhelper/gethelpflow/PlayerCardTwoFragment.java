@@ -1,4 +1,4 @@
-package com.sullivankw.blackjackhelper;
+package com.sullivankw.blackjackhelper.gethelpflow;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,11 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.sullivankw.blackjackhelper.viewmodel.CardSelectedViewModel;
+import com.sullivankw.blackjackhelper.R;
 import com.sullivankw.blackjackhelper.base.BaseFragment;
 
-public class DealerCardFragment extends BaseFragment implements View.OnClickListener {
+public class PlayerCardTwoFragment extends BaseFragment implements View.OnClickListener {
 
     private ImageView buttonTwo;
     private ImageView buttonThree;
@@ -27,37 +28,38 @@ public class DealerCardFragment extends BaseFragment implements View.OnClickList
     private ImageView buttonKing;
     private ImageView buttonAce;
 
-    private CardSelectedViewModel viewModel;
     private int[] buttonIdArray;
+    private CardSelectedViewModel viewModel;
 
-    public DealerCardFragment() {
+    public PlayerCardTwoFragment() {
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_dealer_card, container, false);
+        View view = inflater.inflate(R.layout.fragment_player_card_two, container, false);
         createBtnIdArray();
         setupViews(view);
         setupListeners();
         viewModel = getViewModel();
+
         return view;
     }
 
     private void createBtnIdArray() {
         buttonIdArray = new int[13];
-        buttonIdArray[0] = R.id.cardImageViewDC2;
-        buttonIdArray[1] = R.id.cardImageViewDC3;
-        buttonIdArray[2] = R.id.cardImageViewDC4;
-        buttonIdArray[3] = R.id.cardImageViewDC5;
-        buttonIdArray[4] = R.id.cardImageViewDC6;
-        buttonIdArray[5] = R.id.cardImageViewDC7;
-        buttonIdArray[6] = R.id.cardImageViewDC8;
-        buttonIdArray[7] = R.id.cardImageViewDC9;
-        buttonIdArray[8] = R.id.cardImageViewDCT;
-        buttonIdArray[9] = R.id.cardImageViewDCJ;
-        buttonIdArray[10] = R.id.cardImageViewDCQ;
-        buttonIdArray[11] = R.id.cardImageViewDCK;
-        buttonIdArray[12] = R.id.cardImageViewDCA;
+        buttonIdArray[0] = R.id.cardImageViewP2C2;
+        buttonIdArray[1] = R.id.cardImageViewP2C3;
+        buttonIdArray[2] = R.id.cardImageViewP2C4;
+        buttonIdArray[3] = R.id.cardImageViewP2C5;
+        buttonIdArray[4] = R.id.cardImageViewP2C6;
+        buttonIdArray[5] = R.id.cardImageViewP2C7;
+        buttonIdArray[6] = R.id.cardImageViewP2C8;
+        buttonIdArray[7] = R.id.cardImageViewP2C9;
+        buttonIdArray[8] = R.id.cardImageViewP2CT;
+        buttonIdArray[9] = R.id.cardImageViewP2CJ;
+        buttonIdArray[10] = R.id.cardImageViewP2CQ;
+        buttonIdArray[11] = R.id.cardImageViewP2CK;
+        buttonIdArray[12] = R.id.cardImageViewP2CA;
     }
 
     private void setupListeners() {
@@ -95,12 +97,12 @@ public class DealerCardFragment extends BaseFragment implements View.OnClickList
         buttonAce = buttons[12];
     }
 
-
     @Override
     public void onClick(View v) {
-        String card = convertButtonClickToCardSelected(v.getId(), buttonIdArray);
 
-        viewModel.setDealerCard(card);
-        viewModel.setNextPage(1);
+        String card = convertButtonClickToCardSelected(v.getId(), buttonIdArray);
+        viewModel.setPlayerCardTwo(card);
+        viewModel.setNextPage(3);
     }
+
 }

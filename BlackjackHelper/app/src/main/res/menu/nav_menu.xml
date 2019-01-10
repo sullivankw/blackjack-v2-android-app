@@ -8,4 +8,9 @@
         android:id="@+id/navToPractice"
         android:icon="@android:drawable/btn_plus"
         android:title="@string/practice" />
+    android:title="@string/get_help" />
+    <item
+        android:id="@+id/navToLeaderBoard"
+        android:icon="@android:drawable/btn_plus"
+        android:title="@string/leader_board" />
 </menu>

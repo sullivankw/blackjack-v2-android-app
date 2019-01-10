@@ -38,4 +38,12 @@
     <string name="high_score">High Score</string>
     <string name="make_the_correct_decision_at_the_table">Make the correct decision at the table</string>
     <string name="splash_image_icon">splash image icon</string>
+    <string name="leader_board">Leaderboard</string>
+    <string name="add_to_leaderboard_summary_line_1">Your score of %1$s in a row made our leaderboard.</string>
+    <string name="add_to_leaderboard_summary_line_2">Congrats. Enter your name to get added.</string>
+    <string name="name">Name</string>
+    <string name="user_in_leaderboard">%1$s %2$s</string>
+    <string name="user">User</string>
+    <string name="score">Score</string>
+    <string name="date">Date</string>
 </resources>

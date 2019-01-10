@@ -1,6 +1,8 @@
 package com.sullivankw.blackjackhelper.practice;
 
+import com.google.firebase.database.Query;
 import com.sullivankw.blackjackhelper.base.BaseViewModel;
+import com.sullivankw.blackjackhelper.firebase.FirebaseRepo;
 
 public class PracticeModeViewModel extends BaseViewModel {
 
@@ -21,6 +23,10 @@ public class PracticeModeViewModel extends BaseViewModel {
 
     public void setCurrentStreak(int currentStreak) {
         this.currentStreak = currentStreak;
+    }
+
+    public Query getLeaderboard() {
+        return FirebaseRepo.getFirebaseRepo().getSortedLeaderboard();
     }
 
 }

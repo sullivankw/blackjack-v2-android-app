@@ -8,7 +8,7 @@ public class HandHelperService {
     private HandHelperService() {
     }
 
-    public static HandHelperService getHandHelperService() {
+    public synchronized static HandHelperService getHandHelperService() {
         if (handHelperService == null) {
             handHelperService = new HandHelperService();
         }

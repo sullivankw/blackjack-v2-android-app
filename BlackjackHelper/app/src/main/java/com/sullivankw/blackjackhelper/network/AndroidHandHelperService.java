@@ -27,7 +27,7 @@ public class AndroidHandHelperService {
      **/
     private HandHelperRetrofitClient handHelperRetrofitClient;
 
-    public static AndroidHandHelperService getAndroidHandHelperService() {
+    public synchronized static AndroidHandHelperService getAndroidHandHelperService() {
         if (service == null) {
             service = new AndroidHandHelperService();
         }
