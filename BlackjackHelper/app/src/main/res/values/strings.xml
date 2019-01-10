@@ -42,4 +42,8 @@
     <string name="add_to_leaderboard_summary_line_1">Your score of %1$s in a row made our leaderboard. Congrats.</string>
     <string name="add_to_leaderboard_summary_line_2">Enter your name to get added.</string>
     <string name="name">Name</string>
+    <string name="user_in_leaderboard">%1$s %2$s</string>
+    <string name="user">User</string>
+    <string name="score">Score</string>
+    <string name="date">Date</string>
 </resources>

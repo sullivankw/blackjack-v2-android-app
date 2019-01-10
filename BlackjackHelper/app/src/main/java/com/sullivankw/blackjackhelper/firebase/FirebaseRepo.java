@@ -38,10 +38,9 @@ public class FirebaseRepo {
     }
 
     public Task<Void> deleteLeader(String id) {
-        return getDatabaseRefNoChild().child(DB_PATH)
+        return FirebaseDatabase.getInstance().getReference().child(DB_PATH)
                 .child(id).removeValue();
     }
-
 
     public Task<Void> addToLeaderboard(String name, int score) {
         String timeStamp = new SimpleDateFormat(DATE_FORMAT, Locale.US).format(Calendar.getInstance().getTime());

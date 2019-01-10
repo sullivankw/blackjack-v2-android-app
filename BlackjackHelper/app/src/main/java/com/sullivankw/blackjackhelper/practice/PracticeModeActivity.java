@@ -43,6 +43,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.sullivankw.blackjackhelper.AddToLeaderboardActivity.LEADERBOARD_STORE_VALUE;
+
 public class PracticeModeActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String HAS_BEEN_RATED_KEY = "has_been_rated";
@@ -70,7 +72,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
     private int player2Random;
     private static List<User> leaders;
     private Query leaderBoard;
-    private static int oldStreak = -1;
+    private static int oldStreak = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -138,6 +140,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
 
                     String msg;
                     int msgLength;
+                    boolean lastOneMissed = false;
                     int currentStreak = viewModel.getCurrentStreak();
                     //already been converted before being returned from service layer
                     if (s.equals(viewModel.getSelection())) {
@@ -148,6 +151,7 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
                         msg = "Nope. If dealer has " + viewModel.getDealerCard().getValue() + " you have " +
                                 viewModel.getPlayerCardOne().getValue() + " and "
                                 + viewModel.getPlayerCardTwo().getValue() + " you should " + s;
+                        lastOneMissed = true;
                         oldStreak = currentStreak;
                         currentStreak = 0;
                         msgLength = Toast.LENGTH_LONG;
@@ -161,10 +165,14 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
                     updateStreakValues(currentStreak);
                     setupImageResources();
 
-                    //if wifi enabled
-                    if (oldStreak > getLowestLeaderScore()) {
-                        PracticeModeDialog dialog = new PracticeModeDialog(false, "You score is good enough for our leaderboard. Want to add it?");
-                        dialog.show(getSupportFragmentManager(), "leaderdialog-tag");
+                    if (lastOneMissed) {
+                        if (oldStreak < 1) {
+                            return;
+                        }
+                        if (getLeaderBoardSize() < LEADERBOARD_STORE_VALUE || oldStreak > getLowestLeaderScore()) {
+                            PracticeModeDialog dialog = new PracticeModeDialog(false, "Your score is good enough for our leaderboard. Want to add it?");
+                            dialog.show(getSupportFragmentManager(), "leaderdialog-tag");
+                        }
                     }
                 }
             }
@@ -269,7 +277,6 @@ public class PracticeModeActivity extends BaseActivity implements View.OnClickLi
          * add to counter. if more than 5 times the app has been used,
          * or 2 times after last dismissal we will prompt again
          * **/
-
         if (hasBeenRated()) {
             //all good, don't bug them again
             return;

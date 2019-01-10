@@ -1,5 +1,6 @@
 package com.sullivankw.blackjackhelper;
 
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 
 import android.support.v7.widget.RecyclerView;
@@ -32,8 +33,10 @@ public class LeaderBoardRecViewAdaptor extends RecyclerView.Adapter<LeaderBoardR
     @Override
     public void onBindViewHolder(@NonNull SingleLeaderHolder singleLeaderHolder, int position) {
         final User user = users.get(position);
+        Resources res = singleLeaderHolder.itemView.getContext().getResources();
         singleLeaderHolder.getLeaderCreated().setText(user.getDisplayCreated());
-        singleLeaderHolder.getLeaderName().setText(user.getUsername());
+        singleLeaderHolder.getLeaderName().setText(res.getString(R.string.user_in_leaderboard,
+                String.valueOf(position + 1) + ". ", user.getUsername()));
         singleLeaderHolder.getLeaderScore().setText(String.valueOf(user.getHighScore()));
 
     }

@@ -34,8 +34,8 @@ public class AddToLeaderboardActivity extends BaseActivity {
     private String deleteScoreId;
     private int currentLeaderBoardSize;
     private AddToLeaderBoardViewModel viewModel;
-    private static int LEADERBOARD_STORE_VALUE = 10;
-    private static int MAX_NAME_SIZE = 24;
+    public static int LEADERBOARD_STORE_VALUE = 25;
+    private static int MAX_NAME_SIZE = 20;
     private TextView textViewLine1;
 
     @Override
@@ -87,15 +87,16 @@ public class AddToLeaderboardActivity extends BaseActivity {
                     viewModel.addToLeaderboard(cleanName, scoreToAdd).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Log.e("save-success", this.getClass() + " save to leaderboard successful");
+                            Log.d("save-success", this.getClass() + " save to leaderboard successful");
                             //only delete if save is successful and database leaderboard is already full
                             if (deleteScoreId == null || currentLeaderBoardSize < LEADERBOARD_STORE_VALUE) {
                                 startActivity(new Intent(getBaseContext(), PracticeModeActivity.class));
+                                return;
                             }
                             viewModel.deleteFromLeaderBoard(deleteScoreId).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Log.d("delete-success", this.getClass() + " save to leaderboard successful");
+                                    Log.d("delete-success", this.getClass() + deleteScoreId + " was deleted from the leaderboard");
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -124,7 +125,7 @@ public class AddToLeaderboardActivity extends BaseActivity {
 
     private String cleanName() {
         String cleanName = name.getText().toString();
-        Pattern pt = Pattern.compile("[^a-zA-Z0-9]");
+        Pattern pt = Pattern.compile("[^a-zA-Z0-9 ]");
         Matcher match = pt.matcher(cleanName);
         while (match.find()) {
             String s = match.group();
