@@ -1,12 +1,14 @@
 package com.sullivankw.blackjackhelper;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,6 +16,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.sullivankw.blackjackhelper.base.BaseActivity;
 import com.sullivankw.blackjackhelper.model.User;
+import com.sullivankw.blackjackhelper.practice.PracticeModeActivity;
 import com.sullivankw.blackjackhelper.viewmodel.LeaderBoardViewModel;
 
 import java.util.ArrayList;
@@ -37,6 +40,11 @@ public class LeaderBoardActivity extends BaseActivity {
         setupBottomNav(R.id.bottom_nav_leader_layout);
         setupRecyclerView();
         viewModel = ViewModelProviders.of(this).get(LeaderBoardViewModel.class);
+        if (!isNetworkConnected()) {
+            Toast.makeText(getBaseContext(), "Connection unavailable. " +
+                    "Can't retrieve leaderboard at this time.", Toast.LENGTH_LONG).show();
+            return;
+        }
         setupLeaderBoard();
     }
 
