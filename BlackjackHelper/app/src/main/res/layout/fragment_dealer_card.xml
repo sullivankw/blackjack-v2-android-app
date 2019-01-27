@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/cardImageViewDC2"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
@@ -23,7 +23,7 @@
     <ImageView
         android:id="@+id/cardImageViewDC3"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
         android:src="@drawable/ic_3_of_clubs"
@@ -37,7 +37,7 @@
     <ImageView
         android:id="@+id/cardImageViewDC4"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
         android:src="@drawable/ic_4_of_clubs"
@@ -50,7 +50,7 @@
     <ImageView
         android:id="@+id/cardImageViewDC5"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
@@ -64,7 +64,7 @@
     <ImageView
         android:id="@+id/cardImageViewDC6"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
@@ -78,7 +78,7 @@
     <ImageView
         android:id="@+id/cardImageViewDC7"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
         android:src="@drawable/ic_7_of_clubs"
@@ -90,7 +90,7 @@
     <ImageView
         android:id="@+id/cardImageViewDC8"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
         android:src="@drawable/ic_8_of_clubs"
@@ -102,7 +102,7 @@
     <ImageView
         android:id="@+id/cardImageViewDC9"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
@@ -115,7 +115,7 @@
     <ImageView
         android:id="@+id/cardImageViewDCT"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
@@ -129,7 +129,7 @@
     <ImageView
         android:id="@+id/cardImageViewDCJ"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
         android:src="@drawable/ic_jack_of_clubs"
@@ -141,7 +141,7 @@
     <ImageView
         android:id="@+id/cardImageViewDCQ"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
         android:src="@drawable/ic_queen_of_clubs"
@@ -153,7 +153,7 @@
     <ImageView
         android:id="@+id/cardImageViewDCK"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
@@ -166,7 +166,7 @@
     <ImageView
         android:id="@+id/cardImageViewDCA"
         android:layout_width="64dp"
-        android:layout_height="88dp"
+        android:layout_height="74dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/randomly_selected_dealer_card"
         android:src="@drawable/ic_ace_of_clubs"
