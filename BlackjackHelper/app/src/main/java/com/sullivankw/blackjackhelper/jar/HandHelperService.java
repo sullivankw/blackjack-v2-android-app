@@ -45,7 +45,7 @@ public class HandHelperService {
         }
 		
         //------------------HANDLES SOFT ACES---------------------------------
-        if (playerCard1.equals("A") || playerCard2.equals("A") && playerCard1 != playerCard2) {
+        if (playerCard1.equalsIgnoreCase("ace") || playerCard2.equalsIgnoreCase("ace") && playerCard1 != playerCard2) {
             switch(dealerCardInt) {
                 case 2:
                     if (playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 ||
@@ -411,7 +411,7 @@ public class HandHelperService {
         }
 
         //------------------HANDLES SOFT ACES---------------------------------
-        if (playerCard1.equals("A") || playerCard2.equals("A") && playerCard1 != playerCard2) {
+        if (playerCard1.equalsIgnoreCase("ace") || playerCard2.equalsIgnoreCase("ace") && playerCard1 != playerCard2) {
             switch (dealerCardInt) {
                 case 2:
                     if (playerCardSum == 13 || playerCardSum == 14 || playerCardSum == 15 ||
