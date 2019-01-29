@@ -6,7 +6,7 @@ android {
         applicationId "com.sullivankw.blackjackhelper"
         minSdkVersion 22
         targetSdkVersion 28
-        versionCode 8
+        versionCode 9
         versionName "2.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
